@@ -1,0 +1,10 @@
+datasource.url=jdbc:mysql://192.168.0.183:3306/antcoin_trade01?useUnicode=true&characterEncoding=gbk
+datasource.username=devuser
+datasource.password=devpass
+comment.path=/demo/generatorComments.txt
+schema=antcoin_trade01
+targetProject=D:\usr\aikezhan\mybatis
+basePackage=aikezhan.mybatisGenerated
+#tables=allsalelocs, gprs_sale_01, statistic_day, statistic_day_history, statistic_month, statistic_month_history, statistic_year, statistic_year_history
+tables=gprs_sale_01
+shardingTables=gprs_sale_

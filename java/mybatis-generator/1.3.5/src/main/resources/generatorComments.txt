@@ -1,0 +1,29 @@
+method.constructor=创建 #1#
+method.prefix.get=取得“#1#”
+method.prefix.set=设置“#1#”
+method.prefix.selectByExample=根据#1#条件查询#1#
+method.prefix.selectByExampleWithBLOBs=根据#1#条件（WithBLOBs）查询#1#
+method.prefix.selectByPrimaryKey=根据#1#主键查询#1#
+method.prefix.countByExample=根据#1#条件查询#1#件数
+method.prefix.insert=插入 #1#
+method.prefix.insertSelective=插入 #1#（仅插入有值的字段）
+method.prefix.update=更新 #1#
+method.prefix.updateByPrimaryKeySelective=根据#1#主键更新#1#（仅更新有值的字段）
+method.prefix.updateByPrimaryKey=根据#1#主键更新#1#
+method.prefix.updateByPrimaryKeyWithBLOBs=根据#1#主键（WithBLOBs）更新#1#
+method.prefix.delete=删除 #1#
+method.prefix.deleteByExample=删除满足条件的 #1#
+method.prefix.deleteByPrimaryKey=根据#1#主键删除#1#
+
+field.suffix.HasSetted=“#1#”是否有设值
+method.suffix.HasSetted=判断“#1#”是否有设值
+
+class.suffix.Example=#1#条件
+class.suffix.Key=#1#主键
+class.suffix.Mapper=#1#映射
+
+orderByClause = 排序语句
+distinct = 过滤相同行
+skipRowCount=跳过指定行数 
+takeRowCount=取得指定行数
+tableNo=分表时的表编号

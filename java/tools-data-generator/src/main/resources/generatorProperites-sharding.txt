@@ -1,0 +1,10 @@
+datasource.url=jdbc:mysql://192.168.0.183:3306/antcoin_trade01?useUnicode=true
+datasource.username=devuser
+datasource.password=devpass
+comment.path=/generator/generatorComments.txt
+schema=antcoin
+targetProject=antcoin-data\src\main\java
+basePackage=com.aotaki.antcoin
+
+tables=gprs_sale_01, statistic_day, statistic_day_history, statistic_month, statistic_month_history, statistic_year, statistic_year_history
+shardingTables=gprs_sale, statistic_day, statistic_day_history, statistic_month, statistic_month_history, statistic_year, statistic_year_history

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+	<context id="MySql" targetRuntime="MyBatis3" 
+			 introspectedColumnImpl="ssi.framework.mybatisGenerator.MyIntrospectedColumn">
+
+		<plugin type="ssi.framework.mybatisGenerator.plugins.PagablePlugin"></plugin>
+		<plugin type="ssi.framework.mybatisGenerator.plugins.TopLevelClassCommentPlugin"></plugin>
+		<plugin type="ssi.framework.mybatisGenerator.plugins.NullableDateTimeColumnModelPlugin"></plugin>
+		<plugin type="ssi.framework.mybatisGenerator.plugins.ModelBaseRecordSerializablePlugin"></plugin>
+
+		<commentGenerator type="ssi.framework.mybatisGenerator.MyCommentGenerator">
+			<property name="generatorComment" value="${comment.path}" />
+		</commentGenerator>
+
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="${datasource.url}" userId="${datasource.username}"
+			password="${datasource.password}">
+		</jdbcConnection>
+
+		<javaTypeResolver>
+			<property name="forceBigDecimals" value="false" />
+		</javaTypeResolver>
+
+		<javaModelGenerator targetPackage="${basePackage}.entities" targetProject="${targetProject}">
+			<property name="enableSubPackages" value="true" />
+			<property name="trimStrings" value="false" />
+		</javaModelGenerator>
+
+		<sqlMapGenerator targetPackage="${basePackage}.mappers.xml" targetProject="${targetProject}">
+			<property name="enableSubPackages" value="true" />
+		</sqlMapGenerator>
+
+		<javaClientGenerator type="ssi.framework.mybatisGenerator.xmlmapper.SsiJavaClientGenerator"
+			targetPackage="${basePackage}.mappers" targetProject="${targetProject}">
+			<property name="enableSubPackages" value="true" />
+		</javaClientGenerator>
+		
+<!-- 		<table schema="${schema}" tableName="ssi_user" domainObjectName="AppUser" -->
+<!-- 			enableDeleteByExample="true" enableUpdateByExample="true"> -->
+<!-- 			<property name="useActualColumnNames" value="true" /> -->
+<!-- 		</table>		 -->
+
+	</context>
+</generatorConfiguration>

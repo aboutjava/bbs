@@ -1,0 +1,9 @@
+datasource.url=jdbc:mysql://localhost:3306/bbs?useUnicode=true
+datasource.username=root
+datasource.password=Vops_2016
+comment.path=/generator/generatorComments.txt
+schema=bbs
+targetProject=serious\src\main\java
+basePackage=com.fun.bbs.dao
+
+tables=user

@@ -1,0 +1,9 @@
+datasource.url=jdbc:mysql://192.168.0.183:3306/aikezhan?useUnicode=true&characterEncoding=gbk
+datasource.username=devuser
+datasource.password=devpass
+comment.path=/demo/generatorComments.txt
+schema=aikezhan
+targetProject=D:\usr\aikezhan\mybatis
+basePackage=aikezhan.mybatisGenerated
+tables=customer
+shardingTables=
