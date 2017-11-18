@@ -3,7 +3,7 @@ datasource.username=root
 datasource.password=Vops_2016
 comment.path=/generator/generatorComments.txt
 schema=bbs
-targetProject=serious\src\main\java
+targetProject=..\serious\src\main\java
 basePackage=com.fun.bbs.dao
 
-tables=user
+tables=user,post_record,reply
