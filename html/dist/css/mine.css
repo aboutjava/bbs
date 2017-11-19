@@ -2,3 +2,9 @@
 .layout-top-nav .content-wrapper {
 	padding-top: 50px !important;
 }
+
+@media (max-width: 767px) {
+	.btn-full {
+		width: 100%;
+	}
+}

@@ -21,6 +21,9 @@ public class PostRecord implements Serializable {
     /** 回复数 */
     private Integer replyNum;
 
+    /** 版块 */
+    private String section;
+
     /** 创建时刻 */
     private Date createdAt;
 
@@ -78,6 +81,16 @@ public class PostRecord implements Serializable {
     /** 设置“回复数” */
     public void setReplyNum(Integer replyNum) {
         this.replyNum = replyNum;
+    }
+
+    /** 取得“版块” */
+    public String getSection() {
+        return section;
+    }
+
+    /** 设置“版块” */
+    public void setSection(String section) {
+        this.section = section;
     }
 
     /** 取得“创建时刻” */
