@@ -48,13 +48,43 @@
     window.bbs.mainApi = new MainApi();
 })(jQuery);
 
+// ==============用户信息==============
+(function($) {
+    'use strict';
+
+    let BbsUser = function() {}
+
+    BbsUser.prototype.setUser = function(data) {
+        this.name = data.name;
+        this.roleName = data.roleName;
+        this.authorities = data.authorities;
+    }
+
+    BbsUser.prototype.isUserLogin = function() {
+        return !!data;
+    }
+
+    BbsUser.prototype.canEdit = function(resource) {
+        let auth = resource + 'Edit';
+        return this.authorities.indexOf(auth) >= 0;
+    }
+
+    BbsUser.prototype.canManager = function(resource) {
+        let auth = resource + 'manage';
+        return this.authorities.indexOf(auth) >= 0;
+    }
+
+    window.bbs.user = new BbsUser();
+})(jQuery);
+
+// ==========页面操作===============
 (function($) {
     'use strict';
     let MainPage = function() {
 
     }
 
-    let isMobile = MainPage.isMobile = $(window).width() < 768;
+    let isMobile = MainPage.isMobile = window.matchMedia('(max-width: 767px)').matches;
     
     MainPage.prototype.dropDownHover = function() {
         if (isMobile) {
@@ -100,6 +130,33 @@
             dtd.resolve();
         });
         return dtd.promise();
+    }
+
+    MainPage.prototype.postEdit = function() {
+        $('.post-edit').on('click', function() {
+            if (bbs.user.isUserLogin) {
+                let section = $(this).attr('data-section');
+                let postId = $(this).attr('data-postId');
+
+                if(bbs.user.canEdit(section)) {
+                    layer.iframe({
+                        title: postId ? '修改' : '发新帖',
+                        content: 'postEdit.html?section=' + section + '&postId=' + postId,
+                    });
+                }
+            } else {
+                utils.confirm({
+                    theme: 'warn',
+                    content: '你需要登录后才能继续操作',
+                }, function() {
+                    layer.iframe({
+                        title: '发新帖',
+                        content: 'login.html',
+                    });
+                })
+            }
+        })
+        
     }
 
     MainPage.prototype.init = function() {

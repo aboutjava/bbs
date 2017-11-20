@@ -22,7 +22,7 @@ public class PostRecord implements Serializable {
     private Integer replyNum;
 
     /** 版块 */
-    private String section;
+    private Integer sectionId;
 
     /** 创建时刻 */
     private Date createdAt;
@@ -84,13 +84,13 @@ public class PostRecord implements Serializable {
     }
 
     /** 取得“版块” */
-    public String getSection() {
-        return section;
+    public Integer getSectionId() {
+        return sectionId;
     }
 
     /** 设置“版块” */
-    public void setSection(String section) {
-        this.section = section;
+    public void setSectionId(Integer sectionId) {
+        this.sectionId = sectionId;
     }
 
     /** 取得“创建时刻” */

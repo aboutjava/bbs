@@ -8,7 +8,7 @@
     <result column="title" property="title" jdbcType="VARCHAR" />
     <result column="visit_num" property="visitNum" jdbcType="INTEGER" />
     <result column="reply_num" property="replyNum" jdbcType="INTEGER" />
-    <result column="section" property="section" jdbcType="VARCHAR" />
+    <result column="section_id" property="sectionId" jdbcType="INTEGER" />
     <result column="created_at" property="createdAt" jdbcType="TIMESTAMP" />
     <result column="updated_at" property="updatedAt" jdbcType="TIMESTAMP" />
   </resultMap>
@@ -74,7 +74,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, author_id, title, visit_num, reply_num, section, created_at, updated_at
+    id, author_id, title, visit_num, reply_num, section_id, created_at, updated_at
   </sql>
   <sql id="Blob_Column_List" >
     content
@@ -135,11 +135,11 @@
   </delete>
   <insert id="insert" parameterType="com.fun.bbs.dao.entities.PostRecord" >
     insert into post_record (id, author_id, title, 
-      visit_num, reply_num, section, 
+      visit_num, reply_num, section_id, 
       created_at, updated_at, content
       )
     values (#{id,jdbcType=INTEGER}, #{authorId,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, 
-      #{visitNum,jdbcType=INTEGER}, #{replyNum,jdbcType=INTEGER}, #{section,jdbcType=VARCHAR}, 
+      #{visitNum,jdbcType=INTEGER}, #{replyNum,jdbcType=INTEGER}, #{sectionId,jdbcType=INTEGER}, 
       #{createdAt,jdbcType=TIMESTAMP}, #{updatedAt,jdbcType=TIMESTAMP}, #{content,jdbcType=LONGVARCHAR}
       )
   </insert>
@@ -161,8 +161,8 @@
       <if test="replyNum != null" >
         reply_num,
       </if>
-      <if test="section != null" >
-        section,
+      <if test="sectionId != null" >
+        section_id,
       </if>
       <if test="createdAt != null" >
         created_at,
@@ -190,8 +190,8 @@
       <if test="replyNum != null" >
         #{replyNum,jdbcType=INTEGER},
       </if>
-      <if test="section != null" >
-        #{section,jdbcType=VARCHAR},
+      <if test="sectionId != null" >
+        #{sectionId,jdbcType=INTEGER},
       </if>
       <if test="createdAt != null" >
         #{createdAt,jdbcType=TIMESTAMP},
@@ -228,8 +228,8 @@
       <if test="record.replyNum != null" >
         reply_num = #{record.replyNum,jdbcType=INTEGER},
       </if>
-      <if test="record.section != null" >
-        section = #{record.section,jdbcType=VARCHAR},
+      <if test="record.sectionId != null" >
+        section_id = #{record.sectionId,jdbcType=INTEGER},
       </if>
       <if test="record.createdAt != null" >
         created_at = #{record.createdAt,jdbcType=TIMESTAMP},
@@ -252,7 +252,7 @@
       title = #{record.title,jdbcType=VARCHAR},
       visit_num = #{record.visitNum,jdbcType=INTEGER},
       reply_num = #{record.replyNum,jdbcType=INTEGER},
-      section = #{record.section,jdbcType=VARCHAR},
+      section_id = #{record.sectionId,jdbcType=INTEGER},
       created_at = #{record.createdAt,jdbcType=TIMESTAMP},
       updated_at = #{record.updatedAt,jdbcType=TIMESTAMP},
       content = #{record.content,jdbcType=LONGVARCHAR}
@@ -267,7 +267,7 @@
       title = #{record.title,jdbcType=VARCHAR},
       visit_num = #{record.visitNum,jdbcType=INTEGER},
       reply_num = #{record.replyNum,jdbcType=INTEGER},
-      section = #{record.section,jdbcType=VARCHAR},
+      section_id = #{record.sectionId,jdbcType=INTEGER},
       created_at = #{record.createdAt,jdbcType=TIMESTAMP},
       updated_at = #{record.updatedAt,jdbcType=TIMESTAMP}
     <if test="_parameter != null" >
@@ -289,8 +289,8 @@
       <if test="replyNum != null" >
         reply_num = #{replyNum,jdbcType=INTEGER},
       </if>
-      <if test="section != null" >
-        section = #{section,jdbcType=VARCHAR},
+      <if test="sectionId != null" >
+        section_id = #{sectionId,jdbcType=INTEGER},
       </if>
       <if test="createdAt != null" >
         created_at = #{createdAt,jdbcType=TIMESTAMP},
@@ -310,7 +310,7 @@
       title = #{title,jdbcType=VARCHAR},
       visit_num = #{visitNum,jdbcType=INTEGER},
       reply_num = #{replyNum,jdbcType=INTEGER},
-      section = #{section,jdbcType=VARCHAR},
+      section_id = #{sectionId,jdbcType=INTEGER},
       created_at = #{createdAt,jdbcType=TIMESTAMP},
       updated_at = #{updatedAt,jdbcType=TIMESTAMP},
       content = #{content,jdbcType=LONGVARCHAR}
@@ -322,7 +322,7 @@
       title = #{title,jdbcType=VARCHAR},
       visit_num = #{visitNum,jdbcType=INTEGER},
       reply_num = #{replyNum,jdbcType=INTEGER},
-      section = #{section,jdbcType=VARCHAR},
+      section_id = #{sectionId,jdbcType=INTEGER},
       created_at = #{createdAt,jdbcType=TIMESTAMP},
       updated_at = #{updatedAt,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}

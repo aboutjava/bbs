@@ -6,4 +6,4 @@ schema=bbs
 targetProject=..\serious\src\main\java
 basePackage=com.fun.bbs.dao
 
-tables=user,post_record,reply
+tables=user,post_record,reply,resource,role,role_resouce,section,user_role

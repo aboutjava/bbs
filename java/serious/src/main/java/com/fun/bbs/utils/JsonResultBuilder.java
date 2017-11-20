@@ -23,4 +23,30 @@ public class JsonResultBuilder {
 	public Map<String, Object> toMap() {
 		return result;
 	}
+	
+	@SuppressWarnings("unchecked")
+	public JsonResultMap addMap(String name) {
+		if (!result.containsKey(name)) {
+			result.put(name, new HashMap<String, Object>());
+		}
+		return new JsonResultMap((Map<String, Object>) result.get(name), this);
+	}
+	
+	public static class JsonResultMap {
+		private final Map<String, Object> results;
+		private final JsonResultBuilder builder;
+		public JsonResultMap(Map<String, Object> map, JsonResultBuilder builder) {
+			this.results = map;
+			this.builder = builder;
+		}
+		
+		public JsonResultMap set(String name, Object value) {
+			results.put(name, value);
+			return this;
+		}
+		
+		public JsonResultBuilder end() {
+			return builder;
+		}
+	}
 }

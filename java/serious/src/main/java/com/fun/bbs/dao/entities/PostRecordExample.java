@@ -458,73 +458,63 @@ public class PostRecordExample {
             return (Criteria) this;
         }
 
-        public Criteria andSectionIsNull() {
-            addCriterion("section is null");
+        public Criteria andSectionIdIsNull() {
+            addCriterion("section_id is null");
             return (Criteria) this;
         }
 
-        public Criteria andSectionIsNotNull() {
-            addCriterion("section is not null");
+        public Criteria andSectionIdIsNotNull() {
+            addCriterion("section_id is not null");
             return (Criteria) this;
         }
 
-        public Criteria andSectionEqualTo(String value) {
-            addCriterion("section =", value, "section");
+        public Criteria andSectionIdEqualTo(Integer value) {
+            addCriterion("section_id =", value, "sectionId");
             return (Criteria) this;
         }
 
-        public Criteria andSectionNotEqualTo(String value) {
-            addCriterion("section <>", value, "section");
+        public Criteria andSectionIdNotEqualTo(Integer value) {
+            addCriterion("section_id <>", value, "sectionId");
             return (Criteria) this;
         }
 
-        public Criteria andSectionGreaterThan(String value) {
-            addCriterion("section >", value, "section");
+        public Criteria andSectionIdGreaterThan(Integer value) {
+            addCriterion("section_id >", value, "sectionId");
             return (Criteria) this;
         }
 
-        public Criteria andSectionGreaterThanOrEqualTo(String value) {
-            addCriterion("section >=", value, "section");
+        public Criteria andSectionIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("section_id >=", value, "sectionId");
             return (Criteria) this;
         }
 
-        public Criteria andSectionLessThan(String value) {
-            addCriterion("section <", value, "section");
+        public Criteria andSectionIdLessThan(Integer value) {
+            addCriterion("section_id <", value, "sectionId");
             return (Criteria) this;
         }
 
-        public Criteria andSectionLessThanOrEqualTo(String value) {
-            addCriterion("section <=", value, "section");
+        public Criteria andSectionIdLessThanOrEqualTo(Integer value) {
+            addCriterion("section_id <=", value, "sectionId");
             return (Criteria) this;
         }
 
-        public Criteria andSectionLike(String value) {
-            addCriterion("section like", value, "section");
+        public Criteria andSectionIdIn(List<Integer> values) {
+            addCriterion("section_id in", values, "sectionId");
             return (Criteria) this;
         }
 
-        public Criteria andSectionNotLike(String value) {
-            addCriterion("section not like", value, "section");
+        public Criteria andSectionIdNotIn(List<Integer> values) {
+            addCriterion("section_id not in", values, "sectionId");
             return (Criteria) this;
         }
 
-        public Criteria andSectionIn(List<String> values) {
-            addCriterion("section in", values, "section");
+        public Criteria andSectionIdBetween(Integer value1, Integer value2) {
+            addCriterion("section_id between", value1, value2, "sectionId");
             return (Criteria) this;
         }
 
-        public Criteria andSectionNotIn(List<String> values) {
-            addCriterion("section not in", values, "section");
-            return (Criteria) this;
-        }
-
-        public Criteria andSectionBetween(String value1, String value2) {
-            addCriterion("section between", value1, value2, "section");
-            return (Criteria) this;
-        }
-
-        public Criteria andSectionNotBetween(String value1, String value2) {
-            addCriterion("section not between", value1, value2, "section");
+        public Criteria andSectionIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("section_id not between", value1, value2, "sectionId");
             return (Criteria) this;
         }
 

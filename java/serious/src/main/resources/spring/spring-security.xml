@@ -7,8 +7,8 @@
 
 	<!-- <debug /> -->
 	
-	<http pattern="/bbs/user/**" security="none" />
-	<!--  
+	<http pattern="/bbs/**" security="none" />
+
 	<http auto-config="true" use-expressions="true" access-decision-manager-ref="accessDecisionManager"
 		entry-point-ref="authenticationEntryPoint">
 		<form-login login-processing-url="/api/login" 
@@ -28,26 +28,26 @@
 	</http>
 	
 	<beans:bean name="accessDecisionManager"
-		class="com.aotaki.vops.security.MyAccessDecisionManager" />
+		class="com.fun.bbs.security.MyAccessDecisionManager" />
 	
 	<beans:bean name="authenticationEntryPoint"
-		class="com.aotaki.vops.security.MyAuthenticationEntryPoint" />
+		class="com.fun.bbs.security.MyAuthenticationEntryPoint" />
 
 	<beans:bean name="authenticationSuccessHandler"
-		class="com.aotaki.vops.security.MyAuthenticationSuccessHandler" />
+		class="com.fun.bbs.security.MyAuthenticationSuccessHandler" />
 		
 		<beans:bean name="authenticationFailureHandler"
-		class="com.aotaki.vops.security.MyAuthenticationFailureHandler" />
+		class="com.fun.bbs.security.MyAuthenticationFailureHandler" />
 
 	<beans:bean name="bcryptEncoder"
 		class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
 
 	<beans:bean id="userDetailsService"
-		class="com.aotaki.vops.security.MyUserDetailsService" />
+		class="com.fun.bbs.security.MyUserDetailsService" />
 
 	<authentication-manager erase-credentials="false">
 		<authentication-provider user-service-ref="userDetailsService">		
 			<password-encoder ref="bcryptEncoder" />
 		</authentication-provider>
-	</authentication-manager> -->
+	</authentication-manager>
 </beans:beans>
