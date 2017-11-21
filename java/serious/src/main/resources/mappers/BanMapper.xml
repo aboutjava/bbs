@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.fun.bbs.dao.mappers.ResourceMapper" >
-  <!-- 权限表映射 -->
-  <resultMap id="BaseResultMap" type="com.fun.bbs.dao.entities.Resource" >
+<mapper namespace="com.fun.bbs.dao.mappers.BanMapper" >
+  <!-- 禁言角色映射 -->
+  <resultMap id="BaseResultMap" type="com.fun.bbs.dao.entities.Ban" >
     <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="resource_code" property="resourceCode" jdbcType="CHAR" />
-    <result column="resource_name" property="resourceName" jdbcType="VARCHAR" />
-    <result column="resource_control" property="resourceControl" jdbcType="VARCHAR" />
+    <result column="ban_code" property="banCode" jdbcType="CHAR" />
+    <result column="ban_name" property="banName" jdbcType="VARCHAR" />
     <result column="created_at" property="createdAt" jdbcType="TIMESTAMP" />
     <result column="updated_at" property="updatedAt" jdbcType="TIMESTAMP" />
   </resultMap>
@@ -69,15 +68,15 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, resource_code, resource_name, resource_control, created_at, updated_at
+    id, ban_code, ban_name, created_at, updated_at
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.fun.bbs.dao.entities.ResourceExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.fun.bbs.dao.entities.BanExample" >
     select
     <if test="distinct" >
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from resource
+    from ban
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
@@ -91,41 +90,36 @@
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
-    from resource
+    from ban
     where id = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from resource
+    delete from ban
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.fun.bbs.dao.entities.ResourceExample" >
-    delete from resource
+  <delete id="deleteByExample" parameterType="com.fun.bbs.dao.entities.BanExample" >
+    delete from ban
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.fun.bbs.dao.entities.Resource" >
-    insert into resource (id, resource_code, resource_name, 
-      resource_control, created_at, updated_at
-      )
-    values (#{id,jdbcType=INTEGER}, #{resourceCode,jdbcType=CHAR}, #{resourceName,jdbcType=VARCHAR}, 
-      #{resourceControl,jdbcType=VARCHAR}, #{createdAt,jdbcType=TIMESTAMP}, #{updatedAt,jdbcType=TIMESTAMP}
-      )
+  <insert id="insert" parameterType="com.fun.bbs.dao.entities.Ban" >
+    insert into ban (id, ban_code, ban_name, 
+      created_at, updated_at)
+    values (#{id,jdbcType=INTEGER}, #{banCode,jdbcType=CHAR}, #{banName,jdbcType=VARCHAR}, 
+      #{createdAt,jdbcType=TIMESTAMP}, #{updatedAt,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="com.fun.bbs.dao.entities.Resource" >
-    insert into resource
+  <insert id="insertSelective" parameterType="com.fun.bbs.dao.entities.Ban" >
+    insert into ban
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         id,
       </if>
-      <if test="resourceCode != null" >
-        resource_code,
+      <if test="banCode != null" >
+        ban_code,
       </if>
-      <if test="resourceName != null" >
-        resource_name,
-      </if>
-      <if test="resourceControl != null" >
-        resource_control,
+      <if test="banName != null" >
+        ban_name,
       </if>
       <if test="createdAt != null" >
         created_at,
@@ -138,14 +132,11 @@
       <if test="id != null" >
         #{id,jdbcType=INTEGER},
       </if>
-      <if test="resourceCode != null" >
-        #{resourceCode,jdbcType=CHAR},
+      <if test="banCode != null" >
+        #{banCode,jdbcType=CHAR},
       </if>
-      <if test="resourceName != null" >
-        #{resourceName,jdbcType=VARCHAR},
-      </if>
-      <if test="resourceControl != null" >
-        #{resourceControl,jdbcType=VARCHAR},
+      <if test="banName != null" >
+        #{banName,jdbcType=VARCHAR},
       </if>
       <if test="createdAt != null" >
         #{createdAt,jdbcType=TIMESTAMP},
@@ -155,26 +146,23 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.fun.bbs.dao.entities.ResourceExample" resultType="java.lang.Integer" >
-    select count(*) from resource
+  <select id="countByExample" parameterType="com.fun.bbs.dao.entities.BanExample" resultType="java.lang.Integer" >
+    select count(*) from ban
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map" >
-    update resource
+    update ban
     <set >
       <if test="record.id != null" >
         id = #{record.id,jdbcType=INTEGER},
       </if>
-      <if test="record.resourceCode != null" >
-        resource_code = #{record.resourceCode,jdbcType=CHAR},
+      <if test="record.banCode != null" >
+        ban_code = #{record.banCode,jdbcType=CHAR},
       </if>
-      <if test="record.resourceName != null" >
-        resource_name = #{record.resourceName,jdbcType=VARCHAR},
-      </if>
-      <if test="record.resourceControl != null" >
-        resource_control = #{record.resourceControl,jdbcType=VARCHAR},
+      <if test="record.banName != null" >
+        ban_name = #{record.banName,jdbcType=VARCHAR},
       </if>
       <if test="record.createdAt != null" >
         created_at = #{record.createdAt,jdbcType=TIMESTAMP},
@@ -188,28 +176,24 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map" >
-    update resource
+    update ban
     set id = #{record.id,jdbcType=INTEGER},
-      resource_code = #{record.resourceCode,jdbcType=CHAR},
-      resource_name = #{record.resourceName,jdbcType=VARCHAR},
-      resource_control = #{record.resourceControl,jdbcType=VARCHAR},
+      ban_code = #{record.banCode,jdbcType=CHAR},
+      ban_name = #{record.banName,jdbcType=VARCHAR},
       created_at = #{record.createdAt,jdbcType=TIMESTAMP},
       updated_at = #{record.updatedAt,jdbcType=TIMESTAMP}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.fun.bbs.dao.entities.Resource" >
-    update resource
+  <update id="updateByPrimaryKeySelective" parameterType="com.fun.bbs.dao.entities.Ban" >
+    update ban
     <set >
-      <if test="resourceCode != null" >
-        resource_code = #{resourceCode,jdbcType=CHAR},
+      <if test="banCode != null" >
+        ban_code = #{banCode,jdbcType=CHAR},
       </if>
-      <if test="resourceName != null" >
-        resource_name = #{resourceName,jdbcType=VARCHAR},
-      </if>
-      <if test="resourceControl != null" >
-        resource_control = #{resourceControl,jdbcType=VARCHAR},
+      <if test="banName != null" >
+        ban_name = #{banName,jdbcType=VARCHAR},
       </if>
       <if test="createdAt != null" >
         created_at = #{createdAt,jdbcType=TIMESTAMP},
@@ -220,11 +204,10 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.fun.bbs.dao.entities.Resource" >
-    update resource
-    set resource_code = #{resourceCode,jdbcType=CHAR},
-      resource_name = #{resourceName,jdbcType=VARCHAR},
-      resource_control = #{resourceControl,jdbcType=VARCHAR},
+  <update id="updateByPrimaryKey" parameterType="com.fun.bbs.dao.entities.Ban" >
+    update ban
+    set ban_code = #{banCode,jdbcType=CHAR},
+      ban_name = #{banName,jdbcType=VARCHAR},
       created_at = #{createdAt,jdbcType=TIMESTAMP},
       updated_at = #{updatedAt,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}

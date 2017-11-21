@@ -9,6 +9,9 @@ public class Resource implements Serializable {
     /** id */
     private Integer id;
 
+    /** 权限编号 */
+    private String resourceCode;
+
     /** 权限名 */
     private String resourceName;
 
@@ -29,6 +32,16 @@ public class Resource implements Serializable {
     /** 设置“id” */
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    /** 取得“权限编号” */
+    public String getResourceCode() {
+        return resourceCode;
+    }
+
+    /** 设置“权限编号” */
+    public void setResourceCode(String resourceCode) {
+        this.resourceCode = resourceCode;
     }
 
     /** 取得“权限名” */

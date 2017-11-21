@@ -3,7 +3,16 @@
     'use strict';
     window.bbs = {
         res: {
-            postEdit: 'postEdit',
+            javaBase: 'javaBase',
+            javaThread: 'javaThread',
+            spring: 'spring',
+            mybatis: 'mybatis',
+            hibernate: 'hibernate',
+            struts: 'struts',
+            otherFramework: 'otherFramework',
+            oracle: 'oracle',
+            mysql: 'mysql',
+            otherDb: 'otherDb',
         },
     }
 })();
@@ -66,12 +75,14 @@
 
     BbsUser.prototype.canEdit = function(resource) {
         let auth = resource + 'Edit';
-        return this.authorities.indexOf(auth) >= 0;
+        let ban = resource + 'Ban';
+        return this.authorities.indexOf(ban) < 0 && this.authorities.indexOf(auth) >= 0;
     }
 
     BbsUser.prototype.canManager = function(resource) {
         let auth = resource + 'manage';
-        return this.authorities.indexOf(auth) >= 0;
+        let ban = resource + 'Ban';
+        return this.authorities.indexOf(ban) < 0 && this.authorities.indexOf(auth) >= 0;
     }
 
     window.bbs.user = new BbsUser();
@@ -132,7 +143,7 @@
         return dtd.promise();
     }
 
-    MainPage.prototype.postEdit = function() {
+    MainPage.prototype.postEdit = function() { // 发新帖或修改帖子按钮
         $('.post-edit').on('click', function() {
             if (bbs.user.isUserLogin) {
                 let section = $(this).attr('data-section');
@@ -143,14 +154,16 @@
                         title: postId ? '修改' : '发新帖',
                         content: 'postEdit.html?section=' + section + '&postId=' + postId,
                     });
+                } else {
+                    utils.msg.error('小黑屋住户不能进行此操作！');
                 }
             } else {
-                utils.confirm({
+                utils.msg.confirm({
                     theme: 'warn',
                     content: '你需要登录后才能继续操作',
                 }, function() {
                     layer.iframe({
-                        title: '发新帖',
+                        title: '用户登录',
                         content: 'login.html',
                     });
                 })
@@ -172,7 +185,8 @@
                     $(this).parent().addClass('active');
                 }
             })
-            self.dropDownHover();
+            self.dropDownHover(); // 下拉框hover事件
+            self.postEdit(); // 发新帖或修改帖子
         }).fail(function() {
             alert('init fail');
         })

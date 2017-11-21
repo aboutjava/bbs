@@ -30,6 +30,8 @@
 	
 	let utils = window.utils = window.utils || {};
 
+    let isMobile = utils.isMobile = window.matchMedia('(max-width: 767px)').matches;
+
 	utils.getUrlParams = function(url) {
 		url = url || window.location.search;
 		if (url.indexOf('?')) {

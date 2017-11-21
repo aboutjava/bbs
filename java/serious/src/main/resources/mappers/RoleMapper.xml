@@ -4,6 +4,7 @@
   <!-- 角色表映射 -->
   <resultMap id="BaseResultMap" type="com.fun.bbs.dao.entities.Role" >
     <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="role_code" property="roleCode" jdbcType="CHAR" />
     <result column="role_name" property="roleName" jdbcType="VARCHAR" />
     <result column="created_at" property="createdAt" jdbcType="TIMESTAMP" />
     <result column="updated_at" property="updatedAt" jdbcType="TIMESTAMP" />
@@ -67,7 +68,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, role_name, created_at, updated_at
+    id, role_code, role_name, created_at, updated_at
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.fun.bbs.dao.entities.RoleExample" >
     select
@@ -103,16 +104,19 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.fun.bbs.dao.entities.Role" >
-    insert into role (id, role_name, created_at, 
-      updated_at)
-    values (#{id,jdbcType=INTEGER}, #{roleName,jdbcType=VARCHAR}, #{createdAt,jdbcType=TIMESTAMP}, 
-      #{updatedAt,jdbcType=TIMESTAMP})
+    insert into role (id, role_code, role_name, 
+      created_at, updated_at)
+    values (#{id,jdbcType=INTEGER}, #{roleCode,jdbcType=CHAR}, #{roleName,jdbcType=VARCHAR}, 
+      #{createdAt,jdbcType=TIMESTAMP}, #{updatedAt,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.fun.bbs.dao.entities.Role" >
     insert into role
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         id,
+      </if>
+      <if test="roleCode != null" >
+        role_code,
       </if>
       <if test="roleName != null" >
         role_name,
@@ -127,6 +131,9 @@
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         #{id,jdbcType=INTEGER},
+      </if>
+      <if test="roleCode != null" >
+        #{roleCode,jdbcType=CHAR},
       </if>
       <if test="roleName != null" >
         #{roleName,jdbcType=VARCHAR},
@@ -151,6 +158,9 @@
       <if test="record.id != null" >
         id = #{record.id,jdbcType=INTEGER},
       </if>
+      <if test="record.roleCode != null" >
+        role_code = #{record.roleCode,jdbcType=CHAR},
+      </if>
       <if test="record.roleName != null" >
         role_name = #{record.roleName,jdbcType=VARCHAR},
       </if>
@@ -168,6 +178,7 @@
   <update id="updateByExample" parameterType="map" >
     update role
     set id = #{record.id,jdbcType=INTEGER},
+      role_code = #{record.roleCode,jdbcType=CHAR},
       role_name = #{record.roleName,jdbcType=VARCHAR},
       created_at = #{record.createdAt,jdbcType=TIMESTAMP},
       updated_at = #{record.updatedAt,jdbcType=TIMESTAMP}
@@ -178,6 +189,9 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.fun.bbs.dao.entities.Role" >
     update role
     <set >
+      <if test="roleCode != null" >
+        role_code = #{roleCode,jdbcType=CHAR},
+      </if>
       <if test="roleName != null" >
         role_name = #{roleName,jdbcType=VARCHAR},
       </if>
@@ -192,7 +206,8 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.fun.bbs.dao.entities.Role" >
     update role
-    set role_name = #{roleName,jdbcType=VARCHAR},
+    set role_code = #{roleCode,jdbcType=CHAR},
+      role_name = #{roleName,jdbcType=VARCHAR},
       created_at = #{createdAt,jdbcType=TIMESTAMP},
       updated_at = #{updatedAt,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}

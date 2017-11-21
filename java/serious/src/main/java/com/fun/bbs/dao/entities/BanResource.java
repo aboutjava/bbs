@@ -3,17 +3,17 @@ package com.fun.bbs.dao.entities;
 import java.io.Serializable;
 import java.util.Date;
 
-/** 角色表 */
+/** 禁言权限 */
 @SuppressWarnings("serial")
-public class Role implements Serializable {
+public class BanResource implements Serializable {
     /** id */
     private Integer id;
 
-    /** 角色编号 */
-    private String roleCode;
+    /** 禁言角色id */
+    private Integer banId;
 
-    /** 角色名称 */
-    private String roleName;
+    /** 权限名称 */
+    private Integer resourceId;
 
     /** 创建时刻 */
     private Date createdAt;
@@ -31,24 +31,24 @@ public class Role implements Serializable {
         this.id = id;
     }
 
-    /** 取得“角色编号” */
-    public String getRoleCode() {
-        return roleCode;
+    /** 取得“禁言角色id” */
+    public Integer getBanId() {
+        return banId;
     }
 
-    /** 设置“角色编号” */
-    public void setRoleCode(String roleCode) {
-        this.roleCode = roleCode;
+    /** 设置“禁言角色id” */
+    public void setBanId(Integer banId) {
+        this.banId = banId;
     }
 
-    /** 取得“角色名称” */
-    public String getRoleName() {
-        return roleName;
+    /** 取得“权限名称” */
+    public Integer getResourceId() {
+        return resourceId;
     }
 
-    /** 设置“角色名称” */
-    public void setRoleName(String roleName) {
-        this.roleName = roleName;
+    /** 设置“权限名称” */
+    public void setResourceId(Integer resourceId) {
+        this.resourceId = resourceId;
     }
 
     /** 取得“创建时刻” */

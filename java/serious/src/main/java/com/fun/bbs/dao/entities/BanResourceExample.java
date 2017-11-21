@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-/** 权限表条件 */
-public class ResourceExample {
+/** 禁言权限条件 */
+public class BanResourceExample {
     /** 排序语句 */
     protected String orderByClause;
 
@@ -21,8 +21,8 @@ public class ResourceExample {
     /** 取得指定行数 */
     private Integer takeRowCount = 20;
 
-    /** 创建 权限表条件 */
-    public ResourceExample() {
+    /** 创建 禁言权限条件 */
+    public BanResourceExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
 
@@ -208,213 +208,123 @@ public class ResourceExample {
             return (Criteria) this;
         }
 
-        public Criteria andResourceCodeIsNull() {
-            addCriterion("resource_code is null");
+        public Criteria andBanIdIsNull() {
+            addCriterion("ban_id is null");
             return (Criteria) this;
         }
 
-        public Criteria andResourceCodeIsNotNull() {
-            addCriterion("resource_code is not null");
+        public Criteria andBanIdIsNotNull() {
+            addCriterion("ban_id is not null");
             return (Criteria) this;
         }
 
-        public Criteria andResourceCodeEqualTo(String value) {
-            addCriterion("resource_code =", value, "resourceCode");
+        public Criteria andBanIdEqualTo(Integer value) {
+            addCriterion("ban_id =", value, "banId");
             return (Criteria) this;
         }
 
-        public Criteria andResourceCodeNotEqualTo(String value) {
-            addCriterion("resource_code <>", value, "resourceCode");
+        public Criteria andBanIdNotEqualTo(Integer value) {
+            addCriterion("ban_id <>", value, "banId");
             return (Criteria) this;
         }
 
-        public Criteria andResourceCodeGreaterThan(String value) {
-            addCriterion("resource_code >", value, "resourceCode");
+        public Criteria andBanIdGreaterThan(Integer value) {
+            addCriterion("ban_id >", value, "banId");
             return (Criteria) this;
         }
 
-        public Criteria andResourceCodeGreaterThanOrEqualTo(String value) {
-            addCriterion("resource_code >=", value, "resourceCode");
+        public Criteria andBanIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("ban_id >=", value, "banId");
             return (Criteria) this;
         }
 
-        public Criteria andResourceCodeLessThan(String value) {
-            addCriterion("resource_code <", value, "resourceCode");
+        public Criteria andBanIdLessThan(Integer value) {
+            addCriterion("ban_id <", value, "banId");
             return (Criteria) this;
         }
 
-        public Criteria andResourceCodeLessThanOrEqualTo(String value) {
-            addCriterion("resource_code <=", value, "resourceCode");
+        public Criteria andBanIdLessThanOrEqualTo(Integer value) {
+            addCriterion("ban_id <=", value, "banId");
             return (Criteria) this;
         }
 
-        public Criteria andResourceCodeLike(String value) {
-            addCriterion("resource_code like", value, "resourceCode");
+        public Criteria andBanIdIn(List<Integer> values) {
+            addCriterion("ban_id in", values, "banId");
             return (Criteria) this;
         }
 
-        public Criteria andResourceCodeNotLike(String value) {
-            addCriterion("resource_code not like", value, "resourceCode");
+        public Criteria andBanIdNotIn(List<Integer> values) {
+            addCriterion("ban_id not in", values, "banId");
             return (Criteria) this;
         }
 
-        public Criteria andResourceCodeIn(List<String> values) {
-            addCriterion("resource_code in", values, "resourceCode");
+        public Criteria andBanIdBetween(Integer value1, Integer value2) {
+            addCriterion("ban_id between", value1, value2, "banId");
             return (Criteria) this;
         }
 
-        public Criteria andResourceCodeNotIn(List<String> values) {
-            addCriterion("resource_code not in", values, "resourceCode");
+        public Criteria andBanIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("ban_id not between", value1, value2, "banId");
             return (Criteria) this;
         }
 
-        public Criteria andResourceCodeBetween(String value1, String value2) {
-            addCriterion("resource_code between", value1, value2, "resourceCode");
+        public Criteria andResourceIdIsNull() {
+            addCriterion("resource_id is null");
             return (Criteria) this;
         }
 
-        public Criteria andResourceCodeNotBetween(String value1, String value2) {
-            addCriterion("resource_code not between", value1, value2, "resourceCode");
+        public Criteria andResourceIdIsNotNull() {
+            addCriterion("resource_id is not null");
             return (Criteria) this;
         }
 
-        public Criteria andResourceNameIsNull() {
-            addCriterion("resource_name is null");
+        public Criteria andResourceIdEqualTo(Integer value) {
+            addCriterion("resource_id =", value, "resourceId");
             return (Criteria) this;
         }
 
-        public Criteria andResourceNameIsNotNull() {
-            addCriterion("resource_name is not null");
+        public Criteria andResourceIdNotEqualTo(Integer value) {
+            addCriterion("resource_id <>", value, "resourceId");
             return (Criteria) this;
         }
 
-        public Criteria andResourceNameEqualTo(String value) {
-            addCriterion("resource_name =", value, "resourceName");
+        public Criteria andResourceIdGreaterThan(Integer value) {
+            addCriterion("resource_id >", value, "resourceId");
             return (Criteria) this;
         }
 
-        public Criteria andResourceNameNotEqualTo(String value) {
-            addCriterion("resource_name <>", value, "resourceName");
+        public Criteria andResourceIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("resource_id >=", value, "resourceId");
             return (Criteria) this;
         }
 
-        public Criteria andResourceNameGreaterThan(String value) {
-            addCriterion("resource_name >", value, "resourceName");
+        public Criteria andResourceIdLessThan(Integer value) {
+            addCriterion("resource_id <", value, "resourceId");
             return (Criteria) this;
         }
 
-        public Criteria andResourceNameGreaterThanOrEqualTo(String value) {
-            addCriterion("resource_name >=", value, "resourceName");
+        public Criteria andResourceIdLessThanOrEqualTo(Integer value) {
+            addCriterion("resource_id <=", value, "resourceId");
             return (Criteria) this;
         }
 
-        public Criteria andResourceNameLessThan(String value) {
-            addCriterion("resource_name <", value, "resourceName");
+        public Criteria andResourceIdIn(List<Integer> values) {
+            addCriterion("resource_id in", values, "resourceId");
             return (Criteria) this;
         }
 
-        public Criteria andResourceNameLessThanOrEqualTo(String value) {
-            addCriterion("resource_name <=", value, "resourceName");
+        public Criteria andResourceIdNotIn(List<Integer> values) {
+            addCriterion("resource_id not in", values, "resourceId");
             return (Criteria) this;
         }
 
-        public Criteria andResourceNameLike(String value) {
-            addCriterion("resource_name like", value, "resourceName");
+        public Criteria andResourceIdBetween(Integer value1, Integer value2) {
+            addCriterion("resource_id between", value1, value2, "resourceId");
             return (Criteria) this;
         }
 
-        public Criteria andResourceNameNotLike(String value) {
-            addCriterion("resource_name not like", value, "resourceName");
-            return (Criteria) this;
-        }
-
-        public Criteria andResourceNameIn(List<String> values) {
-            addCriterion("resource_name in", values, "resourceName");
-            return (Criteria) this;
-        }
-
-        public Criteria andResourceNameNotIn(List<String> values) {
-            addCriterion("resource_name not in", values, "resourceName");
-            return (Criteria) this;
-        }
-
-        public Criteria andResourceNameBetween(String value1, String value2) {
-            addCriterion("resource_name between", value1, value2, "resourceName");
-            return (Criteria) this;
-        }
-
-        public Criteria andResourceNameNotBetween(String value1, String value2) {
-            addCriterion("resource_name not between", value1, value2, "resourceName");
-            return (Criteria) this;
-        }
-
-        public Criteria andResourceControlIsNull() {
-            addCriterion("resource_control is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andResourceControlIsNotNull() {
-            addCriterion("resource_control is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andResourceControlEqualTo(String value) {
-            addCriterion("resource_control =", value, "resourceControl");
-            return (Criteria) this;
-        }
-
-        public Criteria andResourceControlNotEqualTo(String value) {
-            addCriterion("resource_control <>", value, "resourceControl");
-            return (Criteria) this;
-        }
-
-        public Criteria andResourceControlGreaterThan(String value) {
-            addCriterion("resource_control >", value, "resourceControl");
-            return (Criteria) this;
-        }
-
-        public Criteria andResourceControlGreaterThanOrEqualTo(String value) {
-            addCriterion("resource_control >=", value, "resourceControl");
-            return (Criteria) this;
-        }
-
-        public Criteria andResourceControlLessThan(String value) {
-            addCriterion("resource_control <", value, "resourceControl");
-            return (Criteria) this;
-        }
-
-        public Criteria andResourceControlLessThanOrEqualTo(String value) {
-            addCriterion("resource_control <=", value, "resourceControl");
-            return (Criteria) this;
-        }
-
-        public Criteria andResourceControlLike(String value) {
-            addCriterion("resource_control like", value, "resourceControl");
-            return (Criteria) this;
-        }
-
-        public Criteria andResourceControlNotLike(String value) {
-            addCriterion("resource_control not like", value, "resourceControl");
-            return (Criteria) this;
-        }
-
-        public Criteria andResourceControlIn(List<String> values) {
-            addCriterion("resource_control in", values, "resourceControl");
-            return (Criteria) this;
-        }
-
-        public Criteria andResourceControlNotIn(List<String> values) {
-            addCriterion("resource_control not in", values, "resourceControl");
-            return (Criteria) this;
-        }
-
-        public Criteria andResourceControlBetween(String value1, String value2) {
-            addCriterion("resource_control between", value1, value2, "resourceControl");
-            return (Criteria) this;
-        }
-
-        public Criteria andResourceControlNotBetween(String value1, String value2) {
-            addCriterion("resource_control not between", value1, value2, "resourceControl");
+        public Criteria andResourceIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("resource_id not between", value1, value2, "resourceId");
             return (Criteria) this;
         }
 

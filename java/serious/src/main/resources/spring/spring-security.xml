@@ -15,7 +15,8 @@
 			authentication-success-handler-ref="authenticationSuccessHandler"
 			authentication-failure-handler-ref="authenticationFailureHandler" />
         
-        <intercept-url pattern="/**" access="authenticated" />
+        <!-- 不登录也能访问 -->
+        <intercept-url pattern="/**" access="IS_AUTHENTICATED_ANONYMOUSLY" /> 
 		
 		<logout logout-url="/api/logout" logout-success-url="/" delete-cookies="JSESSIONID" />
 		<csrf disabled="true" />
