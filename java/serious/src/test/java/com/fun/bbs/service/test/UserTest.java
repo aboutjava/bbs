@@ -19,8 +19,9 @@ public class UserTest {
 	
 	@Test
 	public void test1() {
-		User user = service.findUserById(1);
-		System.out.println(user.getUserName());
+		User user = new User();
+		user.setPassword("123");
+		service.register(user);
 	}
 
 }

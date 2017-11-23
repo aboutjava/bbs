@@ -20,6 +20,7 @@
                 area: ['100%', '100%'],
             }, options);
             let index = layer.open(options);
+            return index;
         }
     }
 })();

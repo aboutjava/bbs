@@ -14,7 +14,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.fun.bbs.dao.entities.Role;
 import com.fun.bbs.dao.entities.RoleExample;
-import com.fun.bbs.dao.entities.RoleResouce;
 import com.fun.bbs.dao.entities.User;
 import com.fun.bbs.dao.entities.UserRole;
 import com.fun.bbs.dao.mappers.RoleMapper;

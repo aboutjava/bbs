@@ -12,7 +12,7 @@ import com.fun.bbs.service.UserService;
 import com.fun.bbs.utils.JsonResultBuilder;
 
 @RestController
-@RequestMapping(value = "bbs/user")
+@RequestMapping(value = "/bbs/user")
 public class UserController {
 	@Autowired
 	private UserService userService;

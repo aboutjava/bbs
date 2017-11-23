@@ -1,9 +1,11 @@
 package com.fun.bbs.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -48,6 +50,9 @@ public class UserService {
 	
 	@Autowired
 	private BanResourceMapper banResourceMapper;
+	
+	@Autowired
+	private PasswordEncoder passwordEncoder;
 	
 	/**
 	 * 根据id查詢用戶
@@ -111,16 +116,25 @@ public class UserService {
 		List<UserBan> userBanList = findUserBanById(id);
 		List<Integer> banIds = userBanList.stream().map(x -> x.getBanId()).collect(Collectors.toList());
 		
-		BanResourceExample banResourceExample = new BanResourceExample();
-		banResourceExample.createCriteria().andBanIdIn(banIds);
-		banResourceExample.setDistinct(true);
-		List<BanResource> banResourceList = banResourceMapper.selectByExample(banResourceExample);
-		List<Integer> resourceIds2 = banResourceList.stream().map(x -> x.getResourceId()).collect(Collectors.toList());
+		List<Integer> resourceIds2 = new ArrayList<>();
+		if (!banIds.isEmpty()) {
+			BanResourceExample banResourceExample = new BanResourceExample();
+			banResourceExample.createCriteria().andBanIdIn(banIds);
+			banResourceExample.setDistinct(true);
+			List<BanResource> banResourceList = banResourceMapper.selectByExample(banResourceExample);
+			resourceIds2 = banResourceList.stream().map(x -> x.getResourceId()).collect(Collectors.toList());
+			resourceIds.addAll(resourceIds2);
+		}
 		
-		resourceIds.addAll(resourceIds2);
 		ResourceExample resourceExample = new ResourceExample();
 		resourceExample.createCriteria().andIdIn(resourceIds);
 		List<Resource> resourceList = resourceMapper.selectByExample(resourceExample);
 		return resourceList.stream().map(x -> x.getResourceControl()).collect(Collectors.toList());
+	}
+	
+	@Transactional(readOnly=false)
+	public void register(User user) {
+		String passwordEncode = passwordEncoder.encode(user.getPassword());
+		System.out.println(passwordEncode);
 	}
 }
