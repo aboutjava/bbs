@@ -24,6 +24,9 @@ public class PostRecord implements Serializable {
     /** 版块 */
     private Integer sectionId;
 
+    /** 发帖时间 */
+    private Date postTime;
+
     /** 创建时刻 */
     private Date createdAt;
 
@@ -91,6 +94,16 @@ public class PostRecord implements Serializable {
     /** 设置“版块” */
     public void setSectionId(Integer sectionId) {
         this.sectionId = sectionId;
+    }
+
+    /** 取得“发帖时间” */
+    public Date getPostTime() {
+        return postTime;
+    }
+
+    /** 设置“发帖时间” */
+    public void setPostTime(Date postTime) {
+        this.postTime = postTime;
     }
 
     /** 取得“创建时刻” */

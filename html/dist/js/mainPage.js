@@ -143,8 +143,11 @@
         });
     }
 
-    UserMenu.prototype.render = function(user) {
-        Mustache.render($('.user-menu').html(), user);
+    UserMenu.prototype.render = function(header) {
+        let res = {};
+        res.user = bbs.user.user;
+        let mainHeader = Mustache.render(header, res);
+        $('#mainHeader').html(mainHeader);
     }
 
     // 主页面
@@ -199,12 +202,7 @@
                     theme: 'warn',
                     content: '你需要登录后才能继续操作',
                 }, function() {
-                    let index = layer.iframe({
-                        title: false,
-                        content: 'login.html',
-                        skin: 'layui-layer-molv',
-                        closeBtn: 0,
-                    });
+                    window.location.replace('login.html?oldHref=' + encodeURIComponent(window.location.href));
                 })
             }
         })
@@ -228,7 +226,21 @@
     // 主页面加载
     function mainPageInit(self) {
         let layout = JSON.parse(localStorage.getItem('commonLayout'));
-        $('#mainHeader').html(layout.header);
+        // 用户信息
+        self.userMenu = new UserMenu(localStorage.getItem('userMenu'));
+        if (bbs.user.isUserLogin()) {
+            if (self.userMenu.isExpired()) {
+                self.userMenu.reload(function(data) {
+                    localStorage.setItem('userMenu', JSON.stringify(data));
+                    self.userMenu.render(layout.header);
+                });
+            } else {
+                self.userMenu.render(layout.header);
+            }
+        } else {
+            self.userMenu.render(layout.header);
+        }
+
         $('#mainFooter').html(layout.footer);
         let currentHref = window.location.href;
         $('#navbar-collapse').find('a').each(function(i, item) {
@@ -240,24 +252,15 @@
         self.dropDownHover(); // 下拉框hover事件
         self.postEdit(); // 发新帖或修改帖子
 
-        // 用户信息
-        if (bbs.user.isUserLogin()) {
-            self.userMenu = new UserMenu(localStorage.getItem('userMenu'));
-            if (self.userMenu.isExpired()) {
-                self.userMenu.reload(function(data) {
-                    localStorage.setItem('userMenu', JSON.stringify(data));
-                    self.userMenu.render(data.user);
-                });
-            } else {
-                self.userMenu.render(bbs.user.user);
-            }
-        }
-
         $(document).on('click', '[data-toggle]', function() {
             let key = $(this).attr('data-toggle');
             if (key === 'logout') {
                 localStorage.removeItem('commonLayout');
                 localStorage.removeItem('userMenu');
+            } else if (key === 'login') {
+                window.location.replace('login.html?oldHref=' + encodeURIComponent(window.location.href));
+            } else if (key === 'register') {
+
             }
         })
     }

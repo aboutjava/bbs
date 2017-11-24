@@ -328,6 +328,126 @@ public class ReplyExample {
             return (Criteria) this;
         }
 
+        public Criteria andReplyTimeIsNull() {
+            addCriterion("reply_time is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andReplyTimeIsNotNull() {
+            addCriterion("reply_time is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andReplyTimeEqualTo(Date value) {
+            addCriterion("reply_time =", value, "replyTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andReplyTimeNotEqualTo(Date value) {
+            addCriterion("reply_time <>", value, "replyTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andReplyTimeGreaterThan(Date value) {
+            addCriterion("reply_time >", value, "replyTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andReplyTimeGreaterThanOrEqualTo(Date value) {
+            addCriterion("reply_time >=", value, "replyTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andReplyTimeLessThan(Date value) {
+            addCriterion("reply_time <", value, "replyTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andReplyTimeLessThanOrEqualTo(Date value) {
+            addCriterion("reply_time <=", value, "replyTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andReplyTimeIn(List<Date> values) {
+            addCriterion("reply_time in", values, "replyTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andReplyTimeNotIn(List<Date> values) {
+            addCriterion("reply_time not in", values, "replyTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andReplyTimeBetween(Date value1, Date value2) {
+            addCriterion("reply_time between", value1, value2, "replyTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andReplyTimeNotBetween(Date value1, Date value2) {
+            addCriterion("reply_time not between", value1, value2, "replyTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andReplyUpdateTimeIsNull() {
+            addCriterion("reply_update_time is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andReplyUpdateTimeIsNotNull() {
+            addCriterion("reply_update_time is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andReplyUpdateTimeEqualTo(Date value) {
+            addCriterion("reply_update_time =", value, "replyUpdateTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andReplyUpdateTimeNotEqualTo(Date value) {
+            addCriterion("reply_update_time <>", value, "replyUpdateTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andReplyUpdateTimeGreaterThan(Date value) {
+            addCriterion("reply_update_time >", value, "replyUpdateTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andReplyUpdateTimeGreaterThanOrEqualTo(Date value) {
+            addCriterion("reply_update_time >=", value, "replyUpdateTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andReplyUpdateTimeLessThan(Date value) {
+            addCriterion("reply_update_time <", value, "replyUpdateTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andReplyUpdateTimeLessThanOrEqualTo(Date value) {
+            addCriterion("reply_update_time <=", value, "replyUpdateTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andReplyUpdateTimeIn(List<Date> values) {
+            addCriterion("reply_update_time in", values, "replyUpdateTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andReplyUpdateTimeNotIn(List<Date> values) {
+            addCriterion("reply_update_time not in", values, "replyUpdateTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andReplyUpdateTimeBetween(Date value1, Date value2) {
+            addCriterion("reply_update_time between", value1, value2, "replyUpdateTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andReplyUpdateTimeNotBetween(Date value1, Date value2) {
+            addCriterion("reply_update_time not between", value1, value2, "replyUpdateTime");
+            return (Criteria) this;
+        }
+
         public Criteria andCreatedAtIsNull() {
             addCriterion("created_at is null");
             return (Criteria) this;

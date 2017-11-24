@@ -1,4 +1,7 @@
 ﻿$(function () {
+    let oldHref = utils.getUrlParams()['oldHref']; // 原来页面的url或者因为没登录而被拦截的url
+    let status = utils.getUrlParams()['status']; // session过期时会返回401
+
     $('#loginBtn').on('click', function () {
         var username = $('#username').val().trim();
         var password = $('#password').val().trim();
@@ -19,8 +22,7 @@
         }).done(function (r) {
             localStorage.setItem('userMenu', JSON.stringify({'user': r.user, 'syncMills': new Date().getTime()}));
             bbs.mainApi.loadLayout().done(function() {
-                window.parent ? window.parent.location.reload(true) : window.location.reload(true);
-                closeWindow();
+                window.location.href = oldHref;
             }).fail(function() {
                 alert('login fail');
             })
@@ -36,6 +38,6 @@
     });
 
     $('.login-close').on('click', function() {
-        closeWindow();
+        window.location.href = oldHref;
     })
 })

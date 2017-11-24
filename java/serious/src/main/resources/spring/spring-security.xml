@@ -19,6 +19,7 @@
         <intercept-url pattern="/bbs/javaBase/editInit" access="hasAuthority('javaBaseEdit')" />
         <!-- 不登录也能访问 -->
 		
+		<intercept-url pattern="/bbs/userMenu" access="authenticated" />
 		<logout logout-url="/bbs/logout" logout-success-url="/" delete-cookies="JSESSIONID" />
 		<csrf disabled="true" />
 

@@ -15,6 +15,12 @@ public class Reply implements Serializable {
     /** 回复者id */
     private Integer replierId;
 
+    /** 回复时间 */
+    private Date replyTime;
+
+    /** 回复修改时间 */
+    private Date replyUpdateTime;
+
     /** 创建时刻 */
     private Date createdAt;
 
@@ -52,6 +58,26 @@ public class Reply implements Serializable {
     /** 设置“回复者id” */
     public void setReplierId(Integer replierId) {
         this.replierId = replierId;
+    }
+
+    /** 取得“回复时间” */
+    public Date getReplyTime() {
+        return replyTime;
+    }
+
+    /** 设置“回复时间” */
+    public void setReplyTime(Date replyTime) {
+        this.replyTime = replyTime;
+    }
+
+    /** 取得“回复修改时间” */
+    public Date getReplyUpdateTime() {
+        return replyUpdateTime;
+    }
+
+    /** 设置“回复修改时间” */
+    public void setReplyUpdateTime(Date replyUpdateTime) {
+        this.replyUpdateTime = replyUpdateTime;
     }
 
     /** 取得“创建时刻” */

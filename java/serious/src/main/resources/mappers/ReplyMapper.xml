@@ -6,6 +6,8 @@
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="post_id" property="postId" jdbcType="INTEGER" />
     <result column="replier_id" property="replierId" jdbcType="INTEGER" />
+    <result column="reply_time" property="replyTime" jdbcType="TIMESTAMP" />
+    <result column="reply_update_time" property="replyUpdateTime" jdbcType="TIMESTAMP" />
     <result column="created_at" property="createdAt" jdbcType="TIMESTAMP" />
     <result column="updated_at" property="updatedAt" jdbcType="TIMESTAMP" />
   </resultMap>
@@ -71,7 +73,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, post_id, replier_id, created_at, updated_at
+    id, post_id, replier_id, reply_time, reply_update_time, created_at, updated_at
   </sql>
   <sql id="Blob_Column_List" >
     reply_content
@@ -132,11 +134,11 @@
   </delete>
   <insert id="insert" parameterType="com.fun.bbs.dao.entities.Reply" >
     insert into reply (id, post_id, replier_id, 
-      created_at, updated_at, reply_content
-      )
+      reply_time, reply_update_time, created_at, 
+      updated_at, reply_content)
     values (#{id,jdbcType=INTEGER}, #{postId,jdbcType=INTEGER}, #{replierId,jdbcType=INTEGER}, 
-      #{createdAt,jdbcType=TIMESTAMP}, #{updatedAt,jdbcType=TIMESTAMP}, #{replyContent,jdbcType=LONGVARCHAR}
-      )
+      #{replyTime,jdbcType=TIMESTAMP}, #{replyUpdateTime,jdbcType=TIMESTAMP}, #{createdAt,jdbcType=TIMESTAMP}, 
+      #{updatedAt,jdbcType=TIMESTAMP}, #{replyContent,jdbcType=LONGVARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.fun.bbs.dao.entities.Reply" >
     insert into reply
@@ -149,6 +151,12 @@
       </if>
       <if test="replierId != null" >
         replier_id,
+      </if>
+      <if test="replyTime != null" >
+        reply_time,
+      </if>
+      <if test="replyUpdateTime != null" >
+        reply_update_time,
       </if>
       <if test="createdAt != null" >
         created_at,
@@ -169,6 +177,12 @@
       </if>
       <if test="replierId != null" >
         #{replierId,jdbcType=INTEGER},
+      </if>
+      <if test="replyTime != null" >
+        #{replyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="replyUpdateTime != null" >
+        #{replyUpdateTime,jdbcType=TIMESTAMP},
       </if>
       <if test="createdAt != null" >
         #{createdAt,jdbcType=TIMESTAMP},
@@ -199,6 +213,12 @@
       <if test="record.replierId != null" >
         replier_id = #{record.replierId,jdbcType=INTEGER},
       </if>
+      <if test="record.replyTime != null" >
+        reply_time = #{record.replyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.replyUpdateTime != null" >
+        reply_update_time = #{record.replyUpdateTime,jdbcType=TIMESTAMP},
+      </if>
       <if test="record.createdAt != null" >
         created_at = #{record.createdAt,jdbcType=TIMESTAMP},
       </if>
@@ -218,6 +238,8 @@
     set id = #{record.id,jdbcType=INTEGER},
       post_id = #{record.postId,jdbcType=INTEGER},
       replier_id = #{record.replierId,jdbcType=INTEGER},
+      reply_time = #{record.replyTime,jdbcType=TIMESTAMP},
+      reply_update_time = #{record.replyUpdateTime,jdbcType=TIMESTAMP},
       created_at = #{record.createdAt,jdbcType=TIMESTAMP},
       updated_at = #{record.updatedAt,jdbcType=TIMESTAMP},
       reply_content = #{record.replyContent,jdbcType=LONGVARCHAR}
@@ -230,6 +252,8 @@
     set id = #{record.id,jdbcType=INTEGER},
       post_id = #{record.postId,jdbcType=INTEGER},
       replier_id = #{record.replierId,jdbcType=INTEGER},
+      reply_time = #{record.replyTime,jdbcType=TIMESTAMP},
+      reply_update_time = #{record.replyUpdateTime,jdbcType=TIMESTAMP},
       created_at = #{record.createdAt,jdbcType=TIMESTAMP},
       updated_at = #{record.updatedAt,jdbcType=TIMESTAMP}
     <if test="_parameter != null" >
@@ -244,6 +268,12 @@
       </if>
       <if test="replierId != null" >
         replier_id = #{replierId,jdbcType=INTEGER},
+      </if>
+      <if test="replyTime != null" >
+        reply_time = #{replyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="replyUpdateTime != null" >
+        reply_update_time = #{replyUpdateTime,jdbcType=TIMESTAMP},
       </if>
       <if test="createdAt != null" >
         created_at = #{createdAt,jdbcType=TIMESTAMP},
@@ -261,6 +291,8 @@
     update reply
     set post_id = #{postId,jdbcType=INTEGER},
       replier_id = #{replierId,jdbcType=INTEGER},
+      reply_time = #{replyTime,jdbcType=TIMESTAMP},
+      reply_update_time = #{replyUpdateTime,jdbcType=TIMESTAMP},
       created_at = #{createdAt,jdbcType=TIMESTAMP},
       updated_at = #{updatedAt,jdbcType=TIMESTAMP},
       reply_content = #{replyContent,jdbcType=LONGVARCHAR}
@@ -270,6 +302,8 @@
     update reply
     set post_id = #{postId,jdbcType=INTEGER},
       replier_id = #{replierId,jdbcType=INTEGER},
+      reply_time = #{replyTime,jdbcType=TIMESTAMP},
+      reply_update_time = #{replyUpdateTime,jdbcType=TIMESTAMP},
       created_at = #{createdAt,jdbcType=TIMESTAMP},
       updated_at = #{updatedAt,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
