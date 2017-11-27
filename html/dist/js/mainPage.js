@@ -192,7 +192,7 @@
                 if(bbs.user.canEdit(section)) {
                     layer.iframe({
                         title: postId ? '修改' : '发新帖',
-                        content: 'postEdit.html?section=' + section + '&postId=' + postId,
+                        content: 'postEdit.html?section=' + section + '&postId=' + (postId ? postId : ''),
                     });
                 } else {
                     utils.msg.error('小黑屋住户不能进行此操作！');
@@ -223,6 +223,11 @@
         
     }
 
+    MainPage.prototype.initPageQuery = function() {
+
+    }
+
+
     // 主页面加载
     function mainPageInit(self) {
         let layout = JSON.parse(localStorage.getItem('commonLayout'));
@@ -251,6 +256,7 @@
         })
         self.dropDownHover(); // 下拉框hover事件
         self.postEdit(); // 发新帖或修改帖子
+        self.initPageQuery();
 
         $(document).on('click', '[data-toggle]', function() {
             let key = $(this).attr('data-toggle');

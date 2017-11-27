@@ -23,8 +23,12 @@
 <!-- ADD THE CLASS layout-top-nav TO REMOVE THE SIDEBAR. -->
 <body>
 <div>
-    <div name="editor" id="editor"></div>
-  <!-- /.content-wrapper -->
+  <div><input class="form-control" type="text" id="title" placeholder="请输入标题" maxlength="30"></div>
+  <div name="editor" id="editor"></div>
+  <div class="modal-footer">
+    <button class="btn btn-primary" id="save">提交</button>
+    <button class="btn btn-default" id="cancel">取消</button>
+  </div>
 </div>
 <!-- ./wrapper -->
 

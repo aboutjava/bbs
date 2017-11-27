@@ -1,5 +1,6 @@
 E:\program\bbs\bbs\java\serious\src\main\java\com\fun\bbs\dao\entities\Resource.java
 E:\program\bbs\bbs\java\serious\src\main\java\com\fun\bbs\dao\entities\Section.java
+E:\program\bbs\bbs\java\serious\src\main\java\com\fun\bbs\queryCond\BaseCond.java
 E:\program\bbs\bbs\java\serious\src\main\java\com\fun\bbs\dao\mappers\RoleResouceMapper.java
 E:\program\bbs\bbs\java\serious\src\main\java\com\fun\bbs\mvc\UserController.java
 E:\program\bbs\bbs\java\serious\src\main\java\com\fun\bbs\dao\entities\PostRecord.java
@@ -10,6 +11,7 @@ E:\program\bbs\bbs\java\serious\src\main\java\com\fun\bbs\dao\entities\RoleExamp
 E:\program\bbs\bbs\java\serious\src\main\java\com\fun\bbs\security\MyAuthenticationEntryPoint.java
 E:\program\bbs\bbs\java\serious\src\main\java\com\fun\bbs\dao\mappers\BanMapper.java
 E:\program\bbs\bbs\java\serious\src\main\java\com\fun\bbs\dao\entities\Reply.java
+E:\program\bbs\bbs\java\serious\src\main\java\com\fun\bbs\utils\QueryUtils.java
 E:\program\bbs\bbs\java\serious\src\main\java\com\fun\bbs\dao\mappers\RoleMapper.java
 E:\program\bbs\bbs\java\serious\src\main\java\com\fun\bbs\service\UserService.java
 E:\program\bbs\bbs\java\serious\src\main\java\com\fun\bbs\security\MyAccessDecisionManager.java
@@ -21,13 +23,17 @@ E:\program\bbs\bbs\java\serious\src\main\java\com\fun\bbs\dao\mappers\ReplyMappe
 E:\program\bbs\bbs\java\serious\src\main\java\com\fun\bbs\dao\mappers\PostRecordMapper.java
 E:\program\bbs\bbs\java\serious\src\main\java\com\fun\bbs\dao\mappers\UserMapper.java
 E:\program\bbs\bbs\java\serious\src\main\java\com\fun\bbs\dao\entities\BanResource.java
+E:\program\bbs\bbs\java\serious\src\main\java\com\fun\bbs\dao\entities\PostRecordDetail.java
 E:\program\bbs\bbs\java\serious\src\main\java\com\fun\bbs\dao\entities\BanExample.java
 E:\program\bbs\bbs\java\serious\src\main\java\com\fun\bbs\security\LoginUserImpl.java
 E:\program\bbs\bbs\java\serious\src\main\java\com\fun\bbs\LoginUser.java
 E:\program\bbs\bbs\java\serious\src\main\java\com\fun\bbs\dao\entities\Ban.java
+E:\program\bbs\bbs\java\serious\src\main\java\com\fun\bbs\mvc\JavaBaseController.java
 E:\program\bbs\bbs\java\serious\src\main\java\com\fun\bbs\utils\AjaxUtils.java
 E:\program\bbs\bbs\java\serious\src\main\java\com\fun\bbs\dao\entities\RoleResouce.java
+E:\program\bbs\bbs\java\serious\src\main\java\com\fun\bbs\dao\mappers\PostRecordExMapper.java
 E:\program\bbs\bbs\java\serious\src\main\java\com\fun\bbs\security\MyAuthenticationSuccessHandler.java
+E:\program\bbs\bbs\java\serious\src\main\java\com\fun\bbs\queryCond\PostRecordCond.java
 E:\program\bbs\bbs\java\serious\src\main\java\com\fun\bbs\utils\ListUtils.java
 E:\program\bbs\bbs\java\serious\src\main\java\com\fun\bbs\dao\entities\UserBan.java
 E:\program\bbs\bbs\java\serious\src\main\java\com\fun\bbs\security\MyUserDetailsService.java
@@ -37,6 +43,7 @@ E:\program\bbs\bbs\java\serious\src\main\java\com\fun\bbs\security\MyAuthenticat
 E:\program\bbs\bbs\java\serious\src\main\java\com\fun\bbs\dao\entities\BanResourceExample.java
 E:\program\bbs\bbs\java\serious\src\main\java\com\fun\bbs\dao\entities\UserRoleExample.java
 E:\program\bbs\bbs\java\serious\src\main\java\com\fun\bbs\dao\entities\User.java
+E:\program\bbs\bbs\java\serious\src\main\java\com\fun\bbs\service\JavaBaseService.java
 E:\program\bbs\bbs\java\serious\src\main\java\com\fun\bbs\dao\mappers\BanResourceMapper.java
 E:\program\bbs\bbs\java\serious\src\main\java\com\fun\bbs\dao\mappers\UserBanMapper.java
 E:\program\bbs\bbs\java\serious\src\main\java\com\fun\bbs\dao\entities\SectionExample.java

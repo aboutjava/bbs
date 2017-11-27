@@ -10,6 +10,8 @@
     <result column="reply_num" property="replyNum" jdbcType="INTEGER" />
     <result column="section_id" property="sectionId" jdbcType="INTEGER" />
     <result column="post_time" property="postTime" jdbcType="TIMESTAMP" />
+    <result column="edit_time" property="editTime" jdbcType="TIMESTAMP" />
+    <result column="edit_user_id" property="editUserId" jdbcType="INTEGER" />
     <result column="created_at" property="createdAt" jdbcType="TIMESTAMP" />
     <result column="updated_at" property="updatedAt" jdbcType="TIMESTAMP" />
   </resultMap>
@@ -75,7 +77,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, author_id, title, visit_num, reply_num, section_id, post_time, created_at, updated_at
+    id, author_id, title, visit_num, reply_num, section_id, post_time, edit_time, edit_user_id, 
+    created_at, updated_at
   </sql>
   <sql id="Blob_Column_List" >
     content
@@ -137,12 +140,14 @@
   <insert id="insert" parameterType="com.fun.bbs.dao.entities.PostRecord" >
     insert into post_record (id, author_id, title, 
       visit_num, reply_num, section_id, 
-      post_time, created_at, updated_at, 
-      content)
+      post_time, edit_time, edit_user_id, 
+      created_at, updated_at, content
+      )
     values (#{id,jdbcType=INTEGER}, #{authorId,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, 
       #{visitNum,jdbcType=INTEGER}, #{replyNum,jdbcType=INTEGER}, #{sectionId,jdbcType=INTEGER}, 
-      #{postTime,jdbcType=TIMESTAMP}, #{createdAt,jdbcType=TIMESTAMP}, #{updatedAt,jdbcType=TIMESTAMP}, 
-      #{content,jdbcType=LONGVARCHAR})
+      #{postTime,jdbcType=TIMESTAMP}, #{editTime,jdbcType=TIMESTAMP}, #{editUserId,jdbcType=INTEGER}, 
+      #{createdAt,jdbcType=TIMESTAMP}, #{updatedAt,jdbcType=TIMESTAMP}, #{content,jdbcType=LONGVARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.fun.bbs.dao.entities.PostRecord" >
     insert into post_record
@@ -167,6 +172,12 @@
       </if>
       <if test="postTime != null" >
         post_time,
+      </if>
+      <if test="editTime != null" >
+        edit_time,
+      </if>
+      <if test="editUserId != null" >
+        edit_user_id,
       </if>
       <if test="createdAt != null" >
         created_at,
@@ -199,6 +210,12 @@
       </if>
       <if test="postTime != null" >
         #{postTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="editTime != null" >
+        #{editTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="editUserId != null" >
+        #{editUserId,jdbcType=INTEGER},
       </if>
       <if test="createdAt != null" >
         #{createdAt,jdbcType=TIMESTAMP},
@@ -241,6 +258,12 @@
       <if test="record.postTime != null" >
         post_time = #{record.postTime,jdbcType=TIMESTAMP},
       </if>
+      <if test="record.editTime != null" >
+        edit_time = #{record.editTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.editUserId != null" >
+        edit_user_id = #{record.editUserId,jdbcType=INTEGER},
+      </if>
       <if test="record.createdAt != null" >
         created_at = #{record.createdAt,jdbcType=TIMESTAMP},
       </if>
@@ -264,6 +287,8 @@
       reply_num = #{record.replyNum,jdbcType=INTEGER},
       section_id = #{record.sectionId,jdbcType=INTEGER},
       post_time = #{record.postTime,jdbcType=TIMESTAMP},
+      edit_time = #{record.editTime,jdbcType=TIMESTAMP},
+      edit_user_id = #{record.editUserId,jdbcType=INTEGER},
       created_at = #{record.createdAt,jdbcType=TIMESTAMP},
       updated_at = #{record.updatedAt,jdbcType=TIMESTAMP},
       content = #{record.content,jdbcType=LONGVARCHAR}
@@ -280,6 +305,8 @@
       reply_num = #{record.replyNum,jdbcType=INTEGER},
       section_id = #{record.sectionId,jdbcType=INTEGER},
       post_time = #{record.postTime,jdbcType=TIMESTAMP},
+      edit_time = #{record.editTime,jdbcType=TIMESTAMP},
+      edit_user_id = #{record.editUserId,jdbcType=INTEGER},
       created_at = #{record.createdAt,jdbcType=TIMESTAMP},
       updated_at = #{record.updatedAt,jdbcType=TIMESTAMP}
     <if test="_parameter != null" >
@@ -307,6 +334,12 @@
       <if test="postTime != null" >
         post_time = #{postTime,jdbcType=TIMESTAMP},
       </if>
+      <if test="editTime != null" >
+        edit_time = #{editTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="editUserId != null" >
+        edit_user_id = #{editUserId,jdbcType=INTEGER},
+      </if>
       <if test="createdAt != null" >
         created_at = #{createdAt,jdbcType=TIMESTAMP},
       </if>
@@ -327,6 +360,8 @@
       reply_num = #{replyNum,jdbcType=INTEGER},
       section_id = #{sectionId,jdbcType=INTEGER},
       post_time = #{postTime,jdbcType=TIMESTAMP},
+      edit_time = #{editTime,jdbcType=TIMESTAMP},
+      edit_user_id = #{editUserId,jdbcType=INTEGER},
       created_at = #{createdAt,jdbcType=TIMESTAMP},
       updated_at = #{updatedAt,jdbcType=TIMESTAMP},
       content = #{content,jdbcType=LONGVARCHAR}
@@ -340,6 +375,8 @@
       reply_num = #{replyNum,jdbcType=INTEGER},
       section_id = #{sectionId,jdbcType=INTEGER},
       post_time = #{postTime,jdbcType=TIMESTAMP},
+      edit_time = #{editTime,jdbcType=TIMESTAMP},
+      edit_user_id = #{editUserId,jdbcType=INTEGER},
       created_at = #{createdAt,jdbcType=TIMESTAMP},
       updated_at = #{updatedAt,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}

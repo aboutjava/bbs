@@ -578,6 +578,126 @@ public class PostRecordExample {
             return (Criteria) this;
         }
 
+        public Criteria andEditTimeIsNull() {
+            addCriterion("edit_time is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andEditTimeIsNotNull() {
+            addCriterion("edit_time is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andEditTimeEqualTo(Date value) {
+            addCriterion("edit_time =", value, "editTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andEditTimeNotEqualTo(Date value) {
+            addCriterion("edit_time <>", value, "editTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andEditTimeGreaterThan(Date value) {
+            addCriterion("edit_time >", value, "editTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andEditTimeGreaterThanOrEqualTo(Date value) {
+            addCriterion("edit_time >=", value, "editTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andEditTimeLessThan(Date value) {
+            addCriterion("edit_time <", value, "editTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andEditTimeLessThanOrEqualTo(Date value) {
+            addCriterion("edit_time <=", value, "editTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andEditTimeIn(List<Date> values) {
+            addCriterion("edit_time in", values, "editTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andEditTimeNotIn(List<Date> values) {
+            addCriterion("edit_time not in", values, "editTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andEditTimeBetween(Date value1, Date value2) {
+            addCriterion("edit_time between", value1, value2, "editTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andEditTimeNotBetween(Date value1, Date value2) {
+            addCriterion("edit_time not between", value1, value2, "editTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andEditUserIdIsNull() {
+            addCriterion("edit_user_id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andEditUserIdIsNotNull() {
+            addCriterion("edit_user_id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andEditUserIdEqualTo(Integer value) {
+            addCriterion("edit_user_id =", value, "editUserId");
+            return (Criteria) this;
+        }
+
+        public Criteria andEditUserIdNotEqualTo(Integer value) {
+            addCriterion("edit_user_id <>", value, "editUserId");
+            return (Criteria) this;
+        }
+
+        public Criteria andEditUserIdGreaterThan(Integer value) {
+            addCriterion("edit_user_id >", value, "editUserId");
+            return (Criteria) this;
+        }
+
+        public Criteria andEditUserIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("edit_user_id >=", value, "editUserId");
+            return (Criteria) this;
+        }
+
+        public Criteria andEditUserIdLessThan(Integer value) {
+            addCriterion("edit_user_id <", value, "editUserId");
+            return (Criteria) this;
+        }
+
+        public Criteria andEditUserIdLessThanOrEqualTo(Integer value) {
+            addCriterion("edit_user_id <=", value, "editUserId");
+            return (Criteria) this;
+        }
+
+        public Criteria andEditUserIdIn(List<Integer> values) {
+            addCriterion("edit_user_id in", values, "editUserId");
+            return (Criteria) this;
+        }
+
+        public Criteria andEditUserIdNotIn(List<Integer> values) {
+            addCriterion("edit_user_id not in", values, "editUserId");
+            return (Criteria) this;
+        }
+
+        public Criteria andEditUserIdBetween(Integer value1, Integer value2) {
+            addCriterion("edit_user_id between", value1, value2, "editUserId");
+            return (Criteria) this;
+        }
+
+        public Criteria andEditUserIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("edit_user_id not between", value1, value2, "editUserId");
+            return (Criteria) this;
+        }
+
         public Criteria andCreatedAtIsNull() {
             addCriterion("created_at is null");
             return (Criteria) this;

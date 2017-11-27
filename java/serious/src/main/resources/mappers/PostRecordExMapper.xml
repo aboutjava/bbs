@@ -16,6 +16,7 @@
     <if test="title != null">
     	and F.title like #{title}
     </if>
+    and F.section_id = 1
   </sql>
   
   <select id="queryCount" parameterType="java.util.Map" resultType="java.lang.Integer">
@@ -28,8 +29,9 @@
 	<include refid="Query_From_Where_Clause" />
 	order by
 	<if test="orderBy != null">
-		${orderBy}
+		${orderBy},
 	</if>
+	F.id
 	<if test="skipRow != null">
 		limit ${skipRow},${takeRow}
 	</if>

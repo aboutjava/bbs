@@ -66,3 +66,6 @@
     border-color: #eea236;
 }
 /*--- layui-ext --- end ------------------*/
+.post-title {
+    min-width: 60%;
+}

@@ -1,13 +1,14 @@
 $(function() {
 	let postId = utils.getUrlParams()['postId']; // 帖子id
 	let section = utils.getUrlParams()['section']; // 版块
+	let editor;
 
 	initEditor(); // 编辑器初始化
 	
 
 	function initEditor() {
 		let E = window.wangEditor;
-		let editor = new E('#editor');
+		editor = new E('#editor');
 		editor.customConfig.uploadImgShowBase64 = true   // 使用 base64 保存图片
     	// editor.customConfig.uploadImgServer = '/upload'  // 上传图片到服务器
     	if (utils.isMobile) {
@@ -20,39 +21,58 @@ $(function() {
 		editor.create();
 	}
 
-	let url;
+	let baseUrl;
 	switch (section) {
-		case 'javaBase': url = bbs.res.javaBase + '/editInit';
+		case 'javaBase': baseUrl = bbs.res.javaBase;
 			break;
-		case 'javaThread': url = bbs.res.javaThread + '/editInit';
+		case 'javaThread': baseUrl = bbs.res.javaThread;
 			break;
-		case 'spring': url = bbs.res.spring + '/editInit';
+		case 'spring': baseUrl = bbs.res.spring;
 			break;
-		case 'mybatis': url = bbs.res.mybatis + '/editInit';
+		case 'mybatis': baseUrl = bbs.res.mybatis;
 			break;
-		case 'hibernate': url = bbs.res.hibernate + '/editInit';
+		case 'hibernate': baseUrl = bbs.res.hibernate;
 			break;
-		case 'struts': url = bbs.res.struts + '/editInit';
+		case 'struts': baseUrl = bbs.res.struts;
 			break;
-		case 'otherFramework': url = bbs.res.otherFramework + '/editInit';
+		case 'otherFramework': baseUrl = bbs.res.otherFramework;
 			break;
-		case 'oracle': url = bbs.res.oracle + '/editInit';
+		case 'oracle': baseUrl = bbs.res.oracle;
 			break;
-		case 'mysql': url = bbs.res.mysql + '/editInit';
+		case 'mysql': baseUrl = bbs.res.mysql;
 			break;
-		case 'otherDb': url = bbs.res.otherDb + '/editInit';
+		case 'otherDb': baseUrl = bbs.res.otherDb;
 			break;
 		default:
 			utils.msg.error('此版块不存在');
 	}
 	
 	bbs.mainApi.ajax({
-		url: url,
+		url: baseUrl + '/editInit',
 		data: {
-			postId: postId,
-			section: section,
+			postId: postId ? postId : null,
+		}
+	}).done(function(r) {
+		if (r.postRecord) {
+			$('#title').val(r.postRecord.title);
+			editor.txt.html(r.postRecord.content);
 		}
 	})
 
+	$('#save').on('click', function() {
+		bbs.mainApi.ajax({
+			url: baseUrl + '/save',
+			data: {
+				title: $('#title').val(),
+				content: editor.txt.html(),
+				id: postId ? postId : null,
+			}
+		}).done(function(r) {
+			window.parent.location.reload();
+			closeWindow();
+		}).fail(function(r) {
+			utils.msg.error(r.message);
+		})
+	})
 	
 })

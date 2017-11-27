@@ -27,6 +27,12 @@ public class PostRecord implements Serializable {
     /** 发帖时间 */
     private Date postTime;
 
+    /** 修改时间 */
+    private Date editTime;
+
+    /** 修改者 */
+    private Integer editUserId;
+
     /** 创建时刻 */
     private Date createdAt;
 
@@ -104,6 +110,26 @@ public class PostRecord implements Serializable {
     /** 设置“发帖时间” */
     public void setPostTime(Date postTime) {
         this.postTime = postTime;
+    }
+
+    /** 取得“修改时间” */
+    public Date getEditTime() {
+        return editTime;
+    }
+
+    /** 设置“修改时间” */
+    public void setEditTime(Date editTime) {
+        this.editTime = editTime;
+    }
+
+    /** 取得“修改者” */
+    public Integer getEditUserId() {
+        return editUserId;
+    }
+
+    /** 设置“修改者” */
+    public void setEditUserId(Integer editUserId) {
+        this.editUserId = editUserId;
     }
 
     /** 取得“创建时刻” */
