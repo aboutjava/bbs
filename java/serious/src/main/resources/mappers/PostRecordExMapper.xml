@@ -9,7 +9,7 @@
 	from post_record A 
 	left join reply B on A.id = B.post_id group by A.id)C 
         left join reply D on (C.id = D.post_id and C.reply_time = D.reply_time)
-        left join user E on E.id = D.replier_id) G,user H
+        left join user E on E.id = D.replier_id) G,user H,section P
 	where 
     F.id = G.id
     and F.author_id = H.id
@@ -17,6 +17,7 @@
     	and F.title like #{title}
     </if>
     and F.section_id = 1
+    and P.id = F.section_id
   </sql>
   
   <select id="queryCount" parameterType="java.util.Map" resultType="java.lang.Integer">
@@ -25,7 +26,7 @@
   </select>
   
   <select id="queryList" parameterType="java.util.Map" resultType="com.fun.bbs.dao.entities.PostRecordDetail">
-  	select F.id,F.post_time,F.title,F.reply_num,F.visit_num,H.user_name author,G.user_name replier,G.reply_time
+  	select F.id,F.post_time,F.title,F.reply_num,F.visit_num,F.section_id,H.user_name author,G.user_name replier,G.reply_time,P.section_name section
 	<include refid="Query_From_Where_Clause" />
 	order by
 	<if test="orderBy != null">
@@ -35,5 +36,24 @@
 	<if test="skipRow != null">
 		limit ${skipRow},${takeRow}
 	</if>
+  </select>
+  
+  <select id="selectPostRecordDetail" resultType="com.fun.bbs.dao.entities.PostRecordDetail">
+  	select A.*,B.user_name author,C.user_name editor
+  	from post_record A 
+  	left join user B on A.author_id = B.id
+  	left join User C on A.edit_user_id = C.id
+  	<where>
+  		A.id = #{postId}
+  	</where>
+  </select>
+  
+  <select id="selectPostReplies">
+  	select 
+  	from reply A
+  	left join user B on A.replier_id = B.id
+  	<where>
+  		A.post_id = #{postId}
+  	</where>
   </select>
 </mapper>

@@ -13,6 +13,7 @@
             oracle: 'oracle',
             mysql: 'mysql',
             otherDb: 'otherDb',
+            postDetail: 'postDetail',
         },
     }
 })();

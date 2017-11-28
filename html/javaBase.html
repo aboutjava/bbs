@@ -24,9 +24,7 @@
 <body class="hold-transition skin-blue layout-top-nav fixed">
 <div class="wrapper">
 
-  <header class="main-header" id="mainHeader">
-    
-  </header>
+  <header class="main-header" id="mainHeader"></header>
   <!-- Full Width Column -->
   <div class="content-wrapper">
     <div class="container">
@@ -92,7 +90,7 @@
 <script id="resultTmpl" type="x-tmpl-mustache">
   {{#rows}}
     <tr data-key="{{id}}">
-      <td class="post-title"><a href="postDetail.html?postId={{id}}">{{title}}</a></td>
+      <td class="post-title"><a href="postDetail.html?postId={{id}}&section={{section}}">{{title}}</a></td>
       <td>{{author}}</td>
       <td>{{replyNum}}/{{visitNum}}</td>
       <td><div>{{replier}}</div><div>{{replyTime}}</div></td>

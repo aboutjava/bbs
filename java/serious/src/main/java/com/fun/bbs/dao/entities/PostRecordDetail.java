@@ -15,7 +15,29 @@ public class PostRecordDetail extends PostRecord implements Serializable {
 	
 	/** 回复时间 */
 	private Date replyTime;
+	
+	/** 版块名称 */
+	private String section;
+	
+	/** 修改者  */
+	private String editor;
 
+
+	public String getEditor() {
+		return editor;
+	}
+
+	public void setEditor(String editor) {
+		this.editor = editor;
+	}
+
+	public String getSection() {
+		return section;
+	}
+
+	public void setSection(String section) {
+		this.section = section;
+	}
 
 	public String getAuthor() {
 		return author;
