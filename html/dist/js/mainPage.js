@@ -87,6 +87,7 @@
         this.name = data.name;
         this.roleName = data.roleName;
         this.authorities = data.authorities;
+        this.userId = data.userId;
         this.user = {name: this.name, roleName : this.roleName};
     }
 
@@ -133,7 +134,7 @@
         bbs.mainApi.ajax({
             url: 'userMenu',
         }).done(function(r) {
-            bbs.mainApi.setUser(r.user);
+            bbs.user.setUser(r.user);
             self.syncMills = new Date().getTime();
             callback({
                 user: r.user,
@@ -185,7 +186,7 @@
     }
 
     MainPage.prototype.postEdit = function() { // 发新帖或修改帖子按钮
-        $('.post-edit').on('click', function() {
+        $('.post-edit').on('click', '[data-section]', function() {
             if (bbs.user.isUserLogin()) {
                 let section = $(this).attr('data-section');
                 let postId = $(this).attr('data-postId');
@@ -208,6 +209,31 @@
             }
         })
         
+    }
+
+    MainPage.prototype.replyEdit = function() { // 回复修改
+        $('.reply-edit').on('click', '[data-replyId]', function() {
+            if (bbs.user.isUserLogin()) {
+                let section = $(this).attr('data-section');
+                let replyId = $(this).attr('data-replyId');
+
+                if(bbs.user.canEdit(section)) {
+                    layer.iframe({
+                        title: '修改',
+                        content: 'replyEdit.html?section=' + section + '&replyId=' + (replyId ? replyId : ''),
+                    });
+                } else {
+                    utils.msg.error('小黑屋住户不能进行此操作！');
+                }
+            } else {
+                utils.msg.confirm({
+                    theme: 'warn',
+                    content: '你需要登录后才能继续操作',
+                }, function() {
+                    window.location.replace('login.html?oldHref=' + encodeURIComponent(window.location.href));
+                })
+            }
+        })
     }
 
     MainPage.prototype.init = function() {
@@ -257,6 +283,7 @@
         })
         self.dropDownHover(); // 下拉框hover事件
         self.postEdit(); // 发新帖或修改帖子
+        self.replyEdit(); // 回复修改
         self.initPageQuery();
 
         $(document).on('click', '[data-toggle]', function() {

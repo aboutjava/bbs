@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.fun.bbs.LoginUser;
 import com.fun.bbs.dao.entities.PostRecord;
 import com.fun.bbs.dao.entities.PostRecordDetail;
+import com.fun.bbs.dao.entities.Reply;
 import com.fun.bbs.queryCond.PostRecordCond;
 import com.fun.bbs.security.SecurityUtils;
 import com.fun.bbs.service.JavaBaseService;
@@ -49,11 +50,41 @@ public class JavaBaseController {
 		return builder.toMap();
 	}
 	
+	/**
+	 * 帖子保存
+	 * @param principal
+	 * @param postRecord
+	 * @return
+	 */
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
 	Map<String, Object> save(Principal principal, PostRecord postRecord) {
 		JsonResultBuilder builder = JsonResultBuilder.create(true);
 		LoginUser loginUser = SecurityUtils.extractLoginUser(principal);
 		javaBaseService.save(loginUser, postRecord);
+		return builder.toMap();
+	}
+	
+	/**
+	 * 回复修改初始化
+	 * @param principal
+	 * @param replyId
+	 * @return
+	 */
+	@RequestMapping(value = "/replyEditInit", method = RequestMethod.POST)
+	Map<String, Object> replyEditInit(Principal principal, @RequestParam(required = false)Integer replyId) {
+		JsonResultBuilder builder = JsonResultBuilder.create(true);
+		Reply reply = javaBaseService.findReplyById(replyId);
+		if (reply != null) {
+			builder.set("reply", reply);
+		}
+		return builder.toMap();
+	}
+	
+	@RequestMapping(value = "/replySave", method = RequestMethod.POST)
+	Map<String, Object> replySave(Principal principal, Reply reply) {
+		JsonResultBuilder builder = JsonResultBuilder.create(true);
+		LoginUser loginUser = SecurityUtils.extractLoginUser(principal);
+		
 		return builder.toMap();
 	}
 }

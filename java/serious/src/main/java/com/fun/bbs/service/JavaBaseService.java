@@ -12,8 +12,10 @@ import org.springframework.transaction.annotation.Transactional;
 import com.fun.bbs.LoginUser;
 import com.fun.bbs.dao.entities.PostRecord;
 import com.fun.bbs.dao.entities.PostRecordDetail;
+import com.fun.bbs.dao.entities.Reply;
 import com.fun.bbs.dao.mappers.PostRecordExMapper;
 import com.fun.bbs.dao.mappers.PostRecordMapper;
+import com.fun.bbs.dao.mappers.ReplyMapper;
 import com.fun.bbs.queryCond.PostRecordCond;
 import com.fun.bbs.utils.QueryUtils;
 
@@ -26,6 +28,9 @@ public class JavaBaseService {
 	
 	@Autowired
 	private PostRecordMapper postRecordMapper;
+	
+	@Autowired
+	private ReplyMapper replyMapper;
 	
 	/**
 	 * 查询java基础版块的帖子
@@ -65,5 +70,14 @@ public class JavaBaseService {
 	 */
 	public PostRecord findPostById(Integer postId) {
 		return postRecordMapper.selectByPrimaryKey(postId);
+	}
+	
+	/**
+	 * 根据回复id查询回复详情
+	 * @param replyId
+	 * @return
+	 */
+	public Reply findReplyById(Integer replyId) {
+		return replyMapper.selectByPrimaryKey(replyId);
 	}
 }

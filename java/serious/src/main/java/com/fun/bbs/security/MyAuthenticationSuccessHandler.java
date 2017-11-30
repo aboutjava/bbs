@@ -29,7 +29,7 @@ public class MyAuthenticationSuccessHandler implements AuthenticationSuccessHand
 		List<String> authorities = authentication.getAuthorities().stream().map(x -> x.getAuthority())
 				.collect(Collectors.toList());
 		builder.addMap("user").set("name", loginUser.getDisplayName()).set("roleName", loginUser.getRoleName())
-				.set("authorities", authorities);
+				.set("userId", loginUser.getUserId()).set("authorities", authorities);
 
 		AjaxUtils.outputJson(response, builder.toMap());
 		clearAuthenticationAttributes(request);

@@ -16,15 +16,15 @@ import com.fun.bbs.utils.JsonResultBuilder;
 @RequestMapping(value = "/bbs")
 @RestController
 public class MyController {
-	
+
 	@RequestMapping(value = "/userMenu")
 	public Map<String, Object> userMenu(Principal principal) {
 		JsonResultBuilder builder = JsonResultBuilder.create(true);
 		LoginUser loginUser = SecurityUtils.extractLoginUser(principal);
-		List<String> authorities = ((Authentication)principal).getAuthorities().stream().map(x -> x.getAuthority())
+		List<String> authorities = ((Authentication) principal).getAuthorities().stream().map(x -> x.getAuthority())
 				.collect(Collectors.toList());
 		builder.addMap("user").set("name", loginUser.getDisplayName()).set("roleName", loginUser.getRoleName())
-				.set("authorities", authorities);
+				.set("userId", loginUser.getUserId()).set("authorities", authorities);
 		return builder.toMap();
 	}
 }

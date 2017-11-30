@@ -45,37 +45,12 @@
 
       <!-- Main content -->
       <section class="content">
-        <div class="callout callout-info">
-          <h4>温馨提示!</h4>
-
-          <p>请遵守版规，营造一个和睦的交流环境。</p>
-        </div>
         <div class="box">
-          <div class="box-header">
-            <div class="form-inline">
-              <div class="form-group pull-left">
-                <input type="text" name="" class="form-control" placeholder="搜索帖子">
-              </div>
-              <div class="form-group pull-left">
-                <button type="button" class="btn btn-primary"><i class="glyphicon glyphicon-search"></i></button>
-              </div>
-              <div class="form-group pull-right">
-                <button type="button" class="btn btn-default post-edit" title="发新帖" data-section="javaBase">
-                  <i class="fa fa-plus" aria-hidden="true"></i> <span class="hidden-xs">发新帖</span>
-                </button>
-              </div>
-            </div>
+          <div class="box-header with-border post-edit">
+            
           </div>
-          <div class="page-list table-responsive box-body">
-            <table class="table table-hover table-striped">
-              <thead class="hidden-xs">
-                <th>主题</th>
-                <th>作者</th>
-                <th>回复/浏览</th>
-                <th>最后回复</th>
-              </thead>
-              <tbody class="resultList"></tbody>
-            </table>
+          <div class="box-body reply-edit">
+            
           </div>
         </div>
         <!-- /.box -->
@@ -90,13 +65,38 @@
 </div>
 <!-- ./wrapper -->
 <script id="resultTmpl" type="x-tmpl-mustache">
+  <div data-key="{{id}}">
+    <h3>{{title}}</h3>
+    <div class="post-detail">
+      <div class="post-author">
+        <img src="dist/img/avatar.png">
+        <a href="#">{{author}}</a>
+        <span>{{postTime}}</span>
+        {{#edit}}
+        <a href="#" data-section="{{section}}" data-postId="{{postId}}">修改</a>
+        {{/edit}}
+      </div>
+      <div class="post-content">
+        <p>{{{content}}}</p>
+      </div>
+    </div>
+  </div>
+</script>
+<script id="replyTmpl" type="x-tmpl-mustache">
   {{#rows}}
-    <tr data-key="{{id}}">
-      <td class="post-title"><a href="postDetail.html?postId={{id}}">{{title}}</a></td>
-      <td>{{author}}</td>
-      <td>{{replyNum}}/{{visitNum}}</td>
-      <td><div>{{replier}}</div><div>{{replyTime}}</div></td>
-    </tr>
+    <div class="reply">
+      <div class="reply-author">
+        <img src="dist/img/avatar.png">
+        <a href="#">{{replier}}</a>
+        <span>{{replyTime}}</span>
+        {{#edit}}
+        <a href="#" data-section="{{section}}" data-replyId="{{id}}">修改</a>
+        {{/edit}}
+      </div>
+      <div class="reply-content">
+        <p>{{{replyContent}}}</p>
+      </div>
+    </div>
   {{/rows}}
 </script>
 <!-- jQuery 3 -->

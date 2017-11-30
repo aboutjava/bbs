@@ -46,14 +46,16 @@
   	<where>
   		A.id = #{postId}
   	</where>
+  	order by A.id
   </select>
   
-  <select id="selectPostReplies">
-  	select 
+  <select id="selectPostReplies" resultType="com.fun.bbs.dao.entities.ReplyDetail">
+  	select B.user_name replier,A.*
   	from reply A
   	left join user B on A.replier_id = B.id
   	<where>
   		A.post_id = #{postId}
   	</where>
+  	order by A.reply_time
   </select>
 </mapper>

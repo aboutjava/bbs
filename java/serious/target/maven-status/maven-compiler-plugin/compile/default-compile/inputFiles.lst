@@ -15,9 +15,11 @@ E:\program\bbs\bbs\java\serious\src\main\java\com\fun\bbs\utils\QueryUtils.java
 E:\program\bbs\bbs\java\serious\src\main\java\com\fun\bbs\dao\mappers\RoleMapper.java
 E:\program\bbs\bbs\java\serious\src\main\java\com\fun\bbs\service\UserService.java
 E:\program\bbs\bbs\java\serious\src\main\java\com\fun\bbs\security\MyAccessDecisionManager.java
+E:\program\bbs\bbs\java\serious\src\main\java\com\fun\bbs\dao\entities\ReplyDetail.java
 E:\program\bbs\bbs\java\serious\src\main\java\com\fun\bbs\dao\entities\UserRole.java
 E:\program\bbs\bbs\java\serious\src\main\java\com\fun\bbs\security\SecurityUtils.java
 E:\program\bbs\bbs\java\serious\src\main\java\com\fun\bbs\dao\mappers\UserRoleMapper.java
+E:\program\bbs\bbs\java\serious\src\main\java\com\fun\bbs\mvc\PostDetailController.java
 E:\program\bbs\bbs\java\serious\src\main\java\com\fun\bbs\dao\mappers\SectionMapper.java
 E:\program\bbs\bbs\java\serious\src\main\java\com\fun\bbs\dao\mappers\ReplyMapper.java
 E:\program\bbs\bbs\java\serious\src\main\java\com\fun\bbs\dao\mappers\PostRecordMapper.java
@@ -54,3 +56,4 @@ E:\program\bbs\bbs\java\serious\src\main\java\com\fun\bbs\dao\entities\UserExamp
 E:\program\bbs\bbs\java\serious\src\main\java\com\fun\bbs\MyBusinessException.java
 E:\program\bbs\bbs\java\serious\src\main\java\com\fun\bbs\dao\mappers\ResourceMapper.java
 E:\program\bbs\bbs\java\serious\src\main\java\com\fun\bbs\dao\entities\RoleResouceExample.java
+E:\program\bbs\bbs\java\serious\src\main\java\com\fun\bbs\service\PostDetailService.java
