@@ -80,4 +80,24 @@ public class JavaBaseService {
 	public Reply findReplyById(Integer replyId) {
 		return replyMapper.selectByPrimaryKey(replyId);
 	}
+	
+	/**
+	 * 保存回复
+	 * @param loginUser
+	 * @param reply
+	 * @return
+	 */
+	@Transactional(readOnly = false)
+	public int saveReply(LoginUser loginUser, Reply reply) {
+		boolean isCreate = reply.getId() == null;
+		// 新增
+		if (isCreate) {
+			reply.setReplierId(loginUser.getUserId());
+			reply.setReplyTime(new Date());
+			return replyMapper.insertSelective(reply);
+		} else {
+			reply.setReplyUpdateTime(new Date());
+			return replyMapper.updateByPrimaryKeySelective(reply);
+		}
+	}
 }

@@ -115,11 +115,23 @@
     padding: 0 50px;
 }
 
+.save-btn {
+    padding: 10px 0;
+}
+
+.reply-editor {
+    padding: 10px 10px;
+    width: 60%;
+}
+
 @media (max-width: 767px) {
     .post-detail {
         padding: 0 10px;
     }
     .post-detail .post-content {
         padding: 0;
+    }
+    .reply-editor {
+        width: 100%;
     }
 }

@@ -1,4 +1,5 @@
 $(function() {
+	let postId = utils.getUrlParams()['postId']; // 帖子id
 	let replyId = utils.getUrlParams()['replyId']; // 回复id
 	let section = utils.getUrlParams()['section']; // 版块
 	let editor;
@@ -62,8 +63,8 @@ $(function() {
 		bbs.mainApi.ajax({
 			url: baseUrl + '/replySave',
 			data: {
-				content: editor.txt.html(),
-				replyId: replyId,
+				replyContent: editor.txt.html(),
+				id: replyId,
 			}
 		}).done(function(r) {
 			window.parent.location.reload();

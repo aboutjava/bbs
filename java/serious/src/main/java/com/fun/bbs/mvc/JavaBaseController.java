@@ -80,11 +80,17 @@ public class JavaBaseController {
 		return builder.toMap();
 	}
 	
+	/**
+	 * 回复保存
+	 * @param principal
+	 * @param reply
+	 * @return
+	 */
 	@RequestMapping(value = "/replySave", method = RequestMethod.POST)
 	Map<String, Object> replySave(Principal principal, Reply reply) {
 		JsonResultBuilder builder = JsonResultBuilder.create(true);
 		LoginUser loginUser = SecurityUtils.extractLoginUser(principal);
-		
+		javaBaseService.saveReply(loginUser, reply);
 		return builder.toMap();
 	}
 }

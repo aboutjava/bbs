@@ -33,4 +33,37 @@ $(function() {
 	}
 	page.init();
 
+	initEditor(); // 编辑器初始化
+	
+
+	function initEditor() {
+		let E = window.wangEditor;
+		editor = new E('#editor');
+		editor.customConfig.uploadImgShowBase64 = true   // 使用 base64 保存图片
+    	// editor.customConfig.uploadImgServer = '/upload'  // 上传图片到服务器
+    	if (utils.isMobile) {
+    		// 自定义菜单配置
+		    editor.customConfig.menus = [
+		        'emoticon',  // 表情
+    			'image',  // 插入图片
+		    ]
+    	}
+		editor.create();
+	}
+
+	$('#save').on('click', function() {
+		bbs.mainApi.ajax({
+			url: bbs.res.javaBase + '/replySave',
+			data: {
+				replyContent: editor.txt.html(),
+				postId: postId,
+			}
+		}).done(function(r) {
+			window.parent.location.reload();
+			closeWindow();
+		}).fail(function(r) {
+			utils.msg.error(r.message);
+		})
+	})
+
 })

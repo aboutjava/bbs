@@ -52,6 +52,10 @@
           <div class="box-body reply-edit">
             
           </div>
+          <div class="reply-editor">
+            <div name="editor" id="editor"></div>
+            <div class="save-btn"><button id="save" class="btn btn-primary">保存</button></div>
+          </div>
         </div>
         <!-- /.box -->
       </section>
@@ -66,6 +70,7 @@
 <!-- ./wrapper -->
 <script id="resultTmpl" type="x-tmpl-mustache">
   <div data-key="{{id}}">
+    <input type="hidden" name="postId" id="postId" value="{{postId}}">
     <h3>{{title}}</h3>
     <div class="post-detail">
       <div class="post-author">
@@ -114,5 +119,6 @@
 <script src="dist/js/utils.js"></script>
 <script src="dist/js/mainPage.js"></script>
 <script src="pages/postDetail/postDetail.js"></script>
+<script src="//unpkg.com/wangeditor/release/wangEditor.min.js"></script>
 </body>
 </html>
